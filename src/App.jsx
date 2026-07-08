@@ -1410,25 +1410,22 @@ export default function App(){
   useEffect(()=>{
     (async()=>{
       try{
-        // CARGA SIMPLIFICADA — datos pre-procesados siempre disponibles
-        // 1. Intentar cargar partidas desde storage (lo único que el usuario genera)
-        const[lp,lsn,lmv]=await Promise.all([
-          cargar("nx4-p"),cargar("nx4-sn"),cargar("nx4-mv")]);
-
-        // 2. Ventas y compras SIEMPRE desde datos pre-procesados (FEL oficial)
+        // CARGA — datos pre-procesados + partidas adicionales desde Google Sheets
         const v=DATOS_INICIALES.ventas;
         const c=DATOS_INICIALES.compras.map(x=>({...x,registrado:false}));
 
-        // 3. Partidas: MERGE de pre-cargadas + adicionales del storage
-        // P270-P273 siempre están en código — no se pueden perder
-        // P274+ vienen del storage (gastos registrados por el usuario)
+        // Cargar partidas adicionales desde Google Sheets (Vercel) o storage local
+        let lpGS=null,lpLocal=null,lsn=null,lmv=null;
+        try{lpGS=await cargarGS("partidas");}catch(e){}
+        try{lpLocal=await cargar("nx4-p");}catch(e){}
+        try{lsn=await cargar("nx4-sn");}catch(e){}
+        try{lmv=await cargar("nx4-mv");}catch(e){}
+
+        const lpRaw=(lpGS&&lpGS.length>0)?lpGS:(lpLocal&&lpLocal.length>0)?lpLocal:[];
         const baseNums=new Set(PARTIDAS_INICIALES.map(x=>x.num));
-        let adicionales=[];
-        if(lp&&lp.length>0){
-          adicionales=lp.filter(x=>!baseNums.has(x.num));
-        }
+        const adicionales=lpRaw.filter(x=>!baseNums.has(x.num));
         const p=[...PARTIDAS_INICIALES,...adicionales];
-        console.log(`Cargado: ${v.length}v ${c.length}c ${p.length}p (${adicionales.length} adicionales del storage)`);
+        console.log("Cargado:",v.length,"v",c.length,"c",p.length,"p (",adicionales.length,"adicionales, fuente:",lpGS?"GS":"local",")");
 
         setVentas(v);
         setCompras(c);
