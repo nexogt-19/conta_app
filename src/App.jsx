@@ -1047,7 +1047,7 @@ function ConciliacionBanco({ventas}){
   );
 }
 
-function PartidasSemanales({ventas,compras,nextNum,onRegistrar,onRegistrarGastos,onEliminar}){
+function PartidasSemanales({ventas,compras,nextNum,onRegistrar,onRegistrarGastos,onEliminar,onEliminarGasto}){
   const[abierto,setAbierto]=useState(null);
   const[abiertoG,setAbiertoG]=useState(null);
   // Estado para edición de cuentas contables en gastos
@@ -1259,7 +1259,12 @@ function PartidasSemanales({ventas,compras,nextNum,onRegistrar,onRegistrarGastos
                           <div key={ci} className={`text-xs bg-white rounded px-2 py-1.5 border ${ctaEditada?"border-blue-300 bg-blue-50":"border-orange-100"}`}>
                             <div className="flex justify-between items-start">
                               <div className="flex-1 min-w-0 mr-2">
-                                <span className="text-gray-700 truncate block font-semibold">{c.proveedor?.slice(0,28)}</span>
+                                <div className="flex items-center justify-between">
+                                  <span className="text-gray-700 truncate block font-semibold">{c.proveedor?.slice(0,28)}</span>
+                                  <button onClick={()=>onEliminarGasto&&onEliminarGasto(c.id)}
+                                    className="text-red-400 hover:text-red-600 font-bold ml-1 shrink-0"
+                                    title="Excluir de esta semana">✕</button>
+                                </div>
                                 <div className="flex gap-2 mt-0.5 flex-wrap">
                                   <span className={pagColor}>
                                     {c.pagoCta==="1.1.17.004"?"🏦 BI":
@@ -1521,6 +1526,11 @@ export default function App(){
 
   const eliminarVenta=useCallback(id=>{
     setVentas(prev=>prev.filter(v=>v.id!==id));
+  },[]);
+
+  const eliminarGasto=useCallback(id=>{
+    setCompras(prev=>prev.map(c=>c.id===id?{...c,registrado:true}:c));
+    // Marcar como registrado lo oculta de la lista de pendientes
   },[]);
 
   const registrarSem=useCallback(p=>{
@@ -1791,7 +1801,7 @@ export default function App(){
             </div>
             <PartidasSemanales ventas={vA} compras={compras} nextNum={nextNum}
               onRegistrar={registrarSem} onRegistrarGastos={registrarGastosSemana}
-              onEliminar={eliminarVenta}/>
+              onEliminar={eliminarVenta} onEliminarGasto={eliminarGasto}/>
           </div>
         )}
 
