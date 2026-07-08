@@ -1173,6 +1173,17 @@ function PartidasSemanales({ventas,compras,nextNum,onRegistrar,onRegistrarGastos
               </button>
             </div>
             <div className="p-3 space-y-2">
+              {/* Botón registrar TODOS de una vez */}
+              <div className="bg-white border-2 border-orange-400 rounded-xl p-3 text-center">
+                <p className="text-xs text-orange-700 font-bold mb-2">
+                  Registrar todos los gastos del mes en una sola partida
+                </p>
+                <button onClick={()=>onRegistrarGastos(pendientes,"Junio 2026")}
+                  className="w-full bg-orange-700 text-white text-sm font-bold py-3 rounded-lg hover:bg-orange-800">
+                  ✔ Registrar 1 partida con todos los {pendientes.length} gastos
+                </button>
+              </div>
+              <p className="text-xs text-center text-orange-400">— o por semana —</p>
               {/* Resumen por semana */}
               {SEM_RANGES.map((s,si)=>{
                 const dia2=f=>{const m=String(f||"").match(/-(\d{2})(?:T|$)/);return m?parseInt(m[1]):0;};
@@ -1423,12 +1434,19 @@ export default function App(){
   },[partidas,startNum,modoVenta]);
 
   const addCompra=useCallback(c=>{
-    const num=startNum+partidas.length;
-    const p=genPartidaGasto(c,num);
-    setCompras(prev=>[...prev,c]);
-    setPartidas(prev=>[...prev,p]);
-    setTab("dashboard");
-  },[partidas,startNum]);
+    if(modoVenta==="individual"){
+      // Modo individual: crea partida inmediata
+      const num=startNum+partidas.length;
+      const p=genPartidaGasto(c,num);
+      setCompras(prev=>[...prev,c]);
+      setPartidas(prev=>[...prev,p]);
+    } else {
+      // Modo semanal: acumula el gasto sin crear partida
+      // Se consolida en Semanal igual que las ventas
+      setCompras(prev=>[...prev,{...c,registrado:false}]);
+    }
+    setTab("semanal");
+  },[partidas,startNum,modoVenta]);
 
   const importVentas=useCallback(rows=>{
     setVentas(prev=>{
@@ -1706,9 +1724,21 @@ export default function App(){
           <div className="space-y-3">
             <div className="flex items-center gap-2 mb-2">
               <span className="text-2xl">🧾</span>
-              <div><h2 className="font-bold text-gray-800">Registrar Gasto — P{nextNum}</h2>
-                <p className="text-xs text-gray-500">IVA calculado por categoría</p></div>
+              <div>
+                <h2 className="font-bold text-gray-800">Registrar Gasto</h2>
+                <p className="text-xs text-gray-500">
+                  {modoVenta==="semanal"
+                    ?"Modo semanal — se acumula en 📅 Semanal para consolidar"
+                    :"Modo individual — crea partida inmediata P"+nextNum}
+                </p>
+              </div>
             </div>
+            {modoVenta==="semanal"&&(
+              <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 text-xs text-amber-700 flex gap-2">
+                <span>💡</span>
+                <span>El gasto se agrega a la semana correspondiente. Vaya a <b>📅 Semanal</b> para ver todos los gastos y registrar la partida consolidada.</span>
+              </div>
+            )}
             <FormGasto num={nextNum} onSave={addCompra}/>
           </div>
         )}
