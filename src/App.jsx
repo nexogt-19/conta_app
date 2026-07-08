@@ -3,7 +3,7 @@ import * as XLSX from "xlsx";
 
 // ── PARTIDAS VENTAS — PRE-CARGADAS (P270-P273) ───────────────────
 // 4 partidas semanales de ventas junio 2026 — cuadradas ✅
-const PARTIDAS_INICIALES = [{"num": 270, "fecha": "2026-06-06", "tipo": "VENTA_SEM", "concepto": "Ventas Semana 1", "lineas": [{"cta": "1.1.17.004", "debe": 17299.2, "haber": 0, "conc": "Cobros BI — Semana 1"}, {"cta": "1.1.17.005", "debe": 18855.0, "haber": 0, "conc": "Cobros Banrural — Semana 1"}, {"cta": "4.1.01", "debe": 0, "haber": 32280.54, "conc": "Ventas Semana 1 — 17 facturas"}, {"cta": "2.1.03", "debe": 0, "haber": 3873.66, "conc": "IVA Debito Fiscal 12% — Semana 1"}]}, {"num": 271, "fecha": "2026-06-16", "tipo": "VENTA_SEM", "concepto": "Ventas Semana 2", "lineas": [{"cta": "1.1.17.004", "debe": 20315.4, "haber": 0, "conc": "Cobros BI — Semana 2"}, {"cta": "1.1.17.005", "debe": 79060.0, "haber": 0, "conc": "Cobros Banrural — Semana 2"}, {"cta": "4.1.01", "debe": 0, "haber": 88728.04, "conc": "Ventas Semana 2 — 18 facturas"}, {"cta": "2.1.03", "debe": 0, "haber": 10647.36, "conc": "IVA Debito Fiscal 12% — Semana 2"}]}, {"num": 272, "fecha": "2026-06-23", "tipo": "VENTA_SEM", "concepto": "Ventas Semana 3", "lineas": [{"cta": "1.1.17.004", "debe": 20373.6, "haber": 0, "conc": "Cobros BI — Semana 3"}, {"cta": "1.1.17.005", "debe": 10790.0, "haber": 0, "conc": "Cobros Banrural — Semana 3"}, {"cta": "4.1.01", "debe": 0, "haber": 27824.66, "conc": "Ventas Semana 3 — 16 facturas"}, {"cta": "2.1.03", "debe": 0, "haber": 3338.94, "conc": "IVA Debito Fiscal 12% — Semana 3"}]}, {"num": 273, "fecha": "2026-06-30", "tipo": "VENTA_SEM", "concepto": "Ventas Semana 4", "lineas": [{"cta": "1.1.17.004", "debe": 8429.0, "haber": 0, "conc": "Cobros BI — Semana 4"}, {"cta": "1.1.17.005", "debe": 10775.0, "haber": 0, "conc": "Cobros Banrural — Semana 4"}, {"cta": "4.1.01", "debe": 0, "haber": 17146.42, "conc": "Ventas Semana 4 — facturas"}, {"cta": "2.1.03", "debe": 0, "haber": 2057.58, "conc": "IVA Debito Fiscal 12% — Semana 4"}]}];
+const PARTIDAS_INICIALES = [{"num": 270, "fecha": "2026-06-06", "tipo": "VENTA_SEM", "concepto": "Ventas Semana 1", "lineas": [{"cta": "1.1.17.004", "debe": 17299.2, "haber": 0, "conc": "Cobros BI — Semana 1"}, {"cta": "1.1.17.005", "debe": 18855.0, "haber": 0, "conc": "Cobros Banrural — Semana 1"}, {"cta": "4.1.01", "debe": 0, "haber": 32280.54, "conc": "Ventas Semana 1 — 17 facturas"}, {"cta": "2.1.03", "debe": 0, "haber": 3873.66, "conc": "IVA Debito Fiscal 12% — Semana 1"}]}, {"num": 271, "fecha": "2026-06-16", "tipo": "VENTA_SEM", "concepto": "Ventas Semana 2", "lineas": [{"cta": "1.1.17.004", "debe": 20315.4, "haber": 0, "conc": "Cobros BI — Semana 2"}, {"cta": "1.1.17.005", "debe": 79060.0, "haber": 0, "conc": "Cobros Banrural — Semana 2"}, {"cta": "4.1.01", "debe": 0, "haber": 88728.04, "conc": "Ventas Semana 2 — 18 facturas"}, {"cta": "2.1.03", "debe": 0, "haber": 10647.36, "conc": "IVA Debito Fiscal 12% — Semana 2"}]}, {"num": 272, "fecha": "2026-06-23", "tipo": "VENTA_SEM", "concepto": "Ventas Semana 3", "lineas": [{"cta": "1.1.17.004", "debe": 20373.6, "haber": 0, "conc": "Cobros BI — Semana 3"}, {"cta": "1.1.17.005", "debe": 10790.0, "haber": 0, "conc": "Cobros Banrural — Semana 3"}, {"cta": "4.1.01", "debe": 0, "haber": 27824.66, "conc": "Ventas Semana 3 — 16 facturas"}, {"cta": "2.1.03", "debe": 0, "haber": 3338.94, "conc": "IVA Debito Fiscal 12% — Semana 3"}]}, {"num": 273, "fecha": "2026-06-24", "tipo": "VENTA_SEM", "concepto": "Ventas Semana 4", "lineas": [{"cta": "1.1.17.005", "debe": 295.0, "haber": 0, "conc": "Cobros Banrural — Semana 4"}, {"cta": "1.1.03", "debe": 1435.2, "haber": 0, "conc": "CxC Pendiente — Semana 4"}, {"cta": "4.1.01", "debe": 0, "haber": 1544.82, "conc": "Ventas Semana 4 — 2 facturas"}, {"cta": "2.1.03", "debe": 0, "haber": 185.38, "conc": "IVA Debito Fiscal 12% — Semana 4"}]}, {"num": 274, "fecha": "2026-06-09", "tipo": "GASTO_SEM", "concepto": "Gastos Semana 1 (11 facturas)", "lineas": [{"cta": "6.1.10", "debe": 307.76, "haber": 0, "conc": "Combustible — Semana 1"}, {"cta": "6.1.14", "debe": 89.24, "haber": 0, "conc": "Insumos de Oficina — Semana 1"}, {"cta": "6.1.17", "debe": 445.53, "haber": 0, "conc": "Programas y Software — Semana 1"}, {"cta": "6.2.06", "debe": 1448.46, "haber": 0, "conc": "Paqueteria y Fletes — Semana 1"}, {"cta": "1.1.06", "debe": 274.92, "haber": 0, "conc": "IVA CF — Semana 1"}, {"cta": "1.1.02", "debe": 0, "haber": 2337.11, "conc": "Pago gastos Semana 1"}, {"cta": "2.1.01", "debe": 0, "haber": 228.8, "conc": "Pago gastos Semana 1"}]}];
 
 // ── DATOS JUNIO 2026 — PRE-CARGADOS DESDE FEL ─────────────────
 // Ventas: 53 activas + 2 anuladas | Compras: 23 registros
@@ -15,23 +15,30 @@ const DATOS_INICIALES = {
 
 // ── CATÁLOGO ───────────────────────────────────────────────────
 const CUENTAS = {
-  "1.1.02":"Caja Chica","1.1.03":"Clientes / Caja General",
+  "1.1.02":"Caja Chica","1.1.03":"Cuentas por Cobrar",
   "1.1.04":"Inventario","1.1.05":"Anticipos a Proveedores",
   "1.1.06":"IVA Credito Fiscal","1.1.08":"IVA Retenido x Cobrar",
-  "1.1.03":"Clientes / Cuentas x Cobrar",
-  "1.1.17.004":"Banco Industrial Q","1.1.17.005":"Banrural Q","1.1.17.006":"BI USD",
-  "2.1.01":"Cuentas por Pagar","2.1.02":"Prestamo Socio","2.1.03":"IVA Debito Fiscal",
-  "2.1.04":"Anticipos de Clientes","2.1.05":"Depositos x Identificar",
-  "2.1.06":"ISR Retenido x Pagar","2.1.07":"Anticipos de Clientes",
-  "3.1.01":"Utilidades Retenidas","3.1.02":"Capital Pagado",
+  "1.1.17.004":"Banco Industrial Q","1.1.17.005":"Banrural Q",
+  "1.1.17.006":"Banco Industrial USD","1.2.01":"Mobiliario y Equipo",
+  "2.1.01":"Cuentas por Pagar","2.1.02":"Prestamos por Pagar",
+  "2.1.03":"IVA Debito Fiscal","2.1.04":"Anticipos de Clientes",
+  "2.1.05":"Depositos x Identificar","2.1.06":"ISR Retenido x Pagar",
+  "3.1.01":"Aportacion de Socios","3.1.02":"Capital Pagado",
   "4.1.01":"Ventas de Bienes","5.1.01":"Costo de Ventas",
-  "6.1.10":"Combustible","6.1.13":"Agua, Luz y Telefono",
-  "6.1.14":"Insumos de Oficina","6.1.15":"Serv. Contables",
-  "6.1.16":"Servicios Legales","6.1.17":"Programas y Software",
-  "6.1.18":"Serv. Tecnologicos","6.1.19":"Afiliaciones y Membresias",
-  "6.2.02":"Comisiones s/Ventas","6.2.03":"Paqueteria y Envios",
-  "6.2.04":"Combustible Vehiculo","6.2.05":"Arrend. y Mant. Vehiculos",
-  "6.2.06":"Paqueteria y Fletes","6.3.01":"Gastos Financieros","6.4.01":"ISR",
+  "6.1.10":"Mantenimiento y Arrend. Vehiculos",
+  "6.1.13":"Telefonia e Internet",
+  "6.1.14":"Papeleria y Utiles de Oficina",
+  "6.1.15":"Servicios Contables",
+  "6.1.16":"Servicios Legales y Notariales",
+  "6.1.17":"Mantenimiento y Reparaciones",
+  "6.1.18":"Servicios Tecnicos",
+  "6.1.19":"Gastos de Afiliacion",
+  "6.2.02":"Comisiones sobre Ventas",
+  "6.2.03":"Viaticos y Gastos de Viaje",
+  "6.2.04":"Combustible y Lubricantes",
+  "6.2.06":"Servicio de Paqueteria",
+  "6.3.01":"Ajuste de Inventario",
+  "6.4.01":"Impuesto Sobre la Renta",
 };
 
 const BANCOS_PAGO = [
@@ -39,6 +46,7 @@ const BANCOS_PAGO = [
   {cta:"1.1.17.005",nom:"Banrural Q"},
   {cta:"1.1.02",nom:"Caja Chica"},
   {cta:"2.1.01",nom:"Credito / CxP"},
+  {cta:"1.1.06",nom:"IVA CF (reclasificar)"},
 ];
 
 const MEDIOS_PAGO = [
@@ -52,21 +60,25 @@ const MEDIOS_PAGO = [
 ];
 
 const GASTOS_CAT = [
-  {cta:"6.1.10",nom:"Combustible",iva:"petro"},
-  {cta:"6.1.13",nom:"Agua, Luz y Telefono",iva:"normal"},
-  {cta:"6.1.14",nom:"Insumos de Oficina",iva:"normal"},
-  {cta:"6.1.15",nom:"Serv. Contables",iva:"normal"},
-  {cta:"6.1.16",nom:"Servicios Legales",iva:"normal"},
-  {cta:"6.1.17",nom:"Programas / Software",iva:"normal"},
-  {cta:"6.1.18",nom:"Serv. Tecnologicos",iva:"fpeq"},
-  {cta:"6.1.19",nom:"Afiliaciones y Membresias",iva:"normal"},
-  {cta:"6.2.02",nom:"Comisiones s/Ventas",iva:"normal"},
-  {cta:"6.2.03",nom:"Paqueteria y Envios",iva:"normal"},
-  {cta:"6.2.04",nom:"Combustible Vehiculo",iva:"petro"},
-  {cta:"6.2.05",nom:"Arrend. y Mant. Vehiculos",iva:"normal"},
-  {cta:"6.2.06",nom:"Paqueteria y Fletes",iva:"normal"},
-  {cta:"6.3.01",nom:"Gastos Financieros",iva:"normal"},
-  {cta:"6.4.01",nom:"ISR Trimestral",iva:"fpeq"},
+  // 6.1.xx Gastos Administrativos
+  {cta:"6.1.10",nom:"Mantenimiento y Arrend. Vehiculos",iva:"normal"},
+  {cta:"6.1.13",nom:"Telefonia e Internet",iva:"normal"},
+  {cta:"6.1.14",nom:"Papeleria y Utiles de Oficina",iva:"normal"},
+  {cta:"6.1.15",nom:"Servicios Contables",iva:"normal"},
+  {cta:"6.1.16",nom:"Servicios Legales y Notariales",iva:"normal"},
+  {cta:"6.1.17",nom:"Mantenimiento y Reparaciones",iva:"normal"},
+  {cta:"6.1.18",nom:"Servicios Tecnicos",iva:"fpeq"},
+  {cta:"6.1.19",nom:"Gastos de Afiliacion",iva:"normal"},
+  // 6.2.xx Gastos de Venta
+  {cta:"6.2.02",nom:"Comisiones sobre Ventas",iva:"normal"},
+  {cta:"6.2.03",nom:"Viaticos y Gastos de Viaje",iva:"normal"},
+  {cta:"6.2.04",nom:"Combustible y Lubricantes",iva:"petro"},
+  {cta:"6.2.06",nom:"Servicio de Paqueteria",iva:"normal"},
+  // Otros
+  {cta:"6.3.01",nom:"Ajuste de Inventario",iva:"fpeq"},
+  {cta:"6.4.01",nom:"Impuesto Sobre la Renta",iva:"fpeq"},
+  // Activos (compras de equipo)
+  {cta:"1.2.01",nom:"Mobiliario y Equipo",iva:"normal"},
 ];
 
 const SEM_RANGES=[
@@ -190,14 +202,22 @@ function genPartidaSemanal(vtas,num,semLabel){
 
 function genPartidaGasto(c,num){
   const L=[];
-  const isFesp=c.tipo==="FESP"||c.tipo==="FESP";
-  const isr=isFesp?r2(c.base*0.05):0; // ISR 5% solo en Factura Especial
-  if(c.base>0) L.push({cta:c.cta,debe:r2(c.base),haber:0,conc:`${CUENTAS[c.cta]||c.cta} - ${c.proveedor}`});
-  if(c.iva>0)  L.push({cta:"1.1.06",debe:r2(c.iva),haber:0,conc:`IVA CF - ${c.proveedor}`});
-  if(isr>0)    L.push({cta:"6.4.01",debe:isr,haber:0,conc:`ISR Retenido FE 5% - ${c.proveedor}`});
-  L.push({cta:c.pagoCta||"1.1.02",debe:0,haber:r2(c.base+c.iva),conc:`Pago - ${c.proveedor}`});
-  if(c.iva>0&&isFesp) L.push({cta:"2.1.03",debe:0,haber:r2(c.iva),conc:`IVA DT ret. FE - ${c.proveedor}`});
-  if(isr>0)    L.push({cta:"2.1.06",debe:0,haber:isr,conc:`ISR Retenido FE x Pagar - ${c.proveedor}`});
+  const isFesp=c.tipo==="FESP";
+
+  if(isFesp){
+    // FESP: base=total/1.12, ISR=5% base (retenido del proveedor, no gasto de Nexo)
+    const isr=c.isrFE||r2(c.base*0.05);
+    const neto=c.netoProv||r2(c.base-isr); // lo que se paga al proveedor
+    L.push({cta:c.cta,debe:r2(c.base),haber:0,conc:`${CUENTAS[c.cta]||c.cta} - ${c.proveedor}`});
+    if(c.iva>0) L.push({cta:"1.1.06",debe:r2(c.iva),haber:0,conc:`IVA CF FE - ${c.proveedor}`});
+    L.push({cta:c.pagoCta||"1.1.17.004",debe:0,haber:neto,conc:`Pago neto proveedor - ${c.proveedor}`});
+    if(c.iva>0) L.push({cta:"2.1.03",debe:0,haber:r2(c.iva),conc:`IVA DT ret. FE x Pagar`});
+    if(isr>0)   L.push({cta:"2.1.06",debe:0,haber:isr,conc:`ISR Retenido FE x Pagar (5%)`});
+  } else {
+    if(c.base>0) L.push({cta:c.cta,debe:r2(c.base),haber:0,conc:`${CUENTAS[c.cta]||c.cta} - ${c.proveedor}`});
+    if(c.iva>0)  L.push({cta:"1.1.06",debe:r2(c.iva),haber:0,conc:`IVA CF - ${c.proveedor}`});
+    L.push({cta:c.pagoCta||"1.1.02",debe:0,haber:r2(c.base+c.iva),conc:`Pago - ${c.proveedor}`});
+  }
   return{num,fecha:c.fecha,tipo:isFesp?"FESP":"COMPRA",
     concepto:`${CUENTAS[c.cta]||c.cta} - ${c.proveedor}`,lineas:L};
 }
@@ -730,11 +750,17 @@ function FormGasto({onSave,num}){
   const[g,setG]=useState({fecha:new Date().toISOString().slice(0,10),proveedor:"",
     cta:"6.1.14",total:"",impPet:"",pagoCta:"1.1.02",tipo:"FACT",serie:""});
   const cat=GASTOS_CAT.find(c=>c.cta===g.cta)||{iva:"normal"};
-  let base=0,iva=0;
-  if(cat.iva==="fpeq"){base=r2(g.total);iva=0;}
+  let base=0,iva=0,isrFE=0;
+  if(cat.iva==="fpeq"||g.tipo==="FPEQ"){base=r2(g.total);iva=0;}
+  else if(g.tipo==="FESP"){
+    base=r2(r2(g.total)/1.12);    // base s/IVA = total ÷ 1.12
+    iva=r2(base*0.12);             // IVA 12% sobre base → SAT-2085
+    isrFE=r2(base*0.05);          // ISR 5% sobre base → Retenciones Web
+  }
   else if(cat.iva==="petro"&&g.impPet){const np=r2(r2(g.total)-r2(g.impPet));base=r2(np/1.12);iva=r2(np/1.12*0.12);}
   else if(g.total){base=r2(r2(g.total)/1.12);iva=r2(r2(g.total)/1.12*0.12);}
-  const c={...g,base,iva,total:r2(base+iva),estado:"ACTIVA"};
+  const netoProv=g.tipo==="FESP"?r2(base-isrFE):0;
+  const c={...g,base,iva,isrFE,netoProv,total:r2(base+iva),estado:"ACTIVA"};
   const p=base>0?genPartidaGasto(c,num):null;
   return(
     <div className="space-y-3">
@@ -743,12 +769,13 @@ function FormGasto({onSave,num}){
         <Inp label="Serie DTE" value={g.serie} placeholder="EE0ABA9D"
           onChange={s=>setG(p=>({...p,serie:s.toUpperCase().slice(0,8)}))}/>
       </div>
-      <Inp label="Proveedor" value={g.proveedor} placeholder="Nombre del proveedor"
+      <Inp label="Proveedor (opcional — deje vacío para ajuste)" value={g.proveedor}
+        placeholder="Nombre del proveedor o descripción"
         onChange={v=>setG(p=>({...p,proveedor:v}))}/>
       <Sel label="Categoría de gasto" value={g.cta} onChange={v=>setG(p=>({...p,cta:v}))}
         options={GASTOS_CAT.map(c=>({value:c.cta,label:`${c.cta} — ${c.nom}`}))}/>
       <div className="flex gap-2">
-        {["FACT","FPEQ","FCAM"].map(t=>(
+        {["FACT","FPEQ","FESP","FCAM"].map(t=>(
           <button key={t} onClick={()=>setG(p=>({...p,tipo:t}))}
             className={`flex-1 py-1.5 rounded-lg text-xs font-bold border ${g.tipo===t?"bg-orange-600 text-white border-orange-600":"bg-white text-gray-600 border-gray-300"}`}>{t}</button>
         ))}
@@ -757,21 +784,29 @@ function FormGasto({onSave,num}){
         onChange={v=>setG(p=>({...p,total:v}))}/>
       {cat.iva==="petro"&&<Inp label="⛽ Impuesto al petróleo (col W FEL)" type="number" step="0.01"
         value={g.impPet} placeholder="Ver col W en FEL Compras" onChange={v=>setG(p=>({...p,impPet:v}))}/>}
-      {g.total>0&&<div className={`rounded-lg p-3 text-sm ${cat.iva==="fpeq"?"bg-yellow-50":"bg-green-50"}`}>
-        <div className="grid grid-cols-3 gap-2 text-center">
-          <div><div className="text-xs text-gray-500">Base gasto</div><b>{q(base)}</b></div>
-          <div><div className="text-xs text-gray-500">IVA CF</div>
-            <b className={cat.iva==="fpeq"?"text-yellow-600":"text-green-600"}>
-              {cat.iva==="fpeq"?"Sin IVA (FPEQ)":q(iva)}</b></div>
-          <div><div className="text-xs text-gray-500">Total</div><b>{q(r2(base+iva))}</b></div>
+      {g.total>0&&<div className={`rounded-lg p-3 text-sm ${cat.iva==="fpeq"?"bg-yellow-50":g.tipo==="FESP"?"bg-red-50":"bg-green-50"}`}>
+        <div className={`grid gap-2 text-center ${g.tipo==="FESP"?"grid-cols-4":"grid-cols-3"}`}>
+          <div><div className="text-xs text-gray-500">Base</div><b>{q(base)}</b></div>
+          <div><div className="text-xs text-gray-500">IVA CF 12%</div>
+            <b className={cat.iva==="fpeq"?"text-yellow-600":g.tipo==="FESP"?"text-blue-600":"text-green-600"}>
+              {cat.iva==="fpeq"?"Sin IVA":q(iva)}</b></div>
+          {g.tipo==="FESP"&&<div><div className="text-xs text-gray-500">ISR 5%</div>
+            <b className="text-red-600">{q(isrFE)}</b></div>}
+          <div><div className="text-xs text-gray-500">Total pagar SAT</div>
+            <b>{g.tipo==="FESP"?q(r2(iva+isrFE)):q(r2(base+iva))}</b></div>
         </div>
+        {g.tipo==="FESP"&&<div className="mt-2 text-xs space-y-0.5 text-center">
+          <p className="text-blue-700">🏦 Neto al proveedor: <b>{q(r2(base-isrFE))}</b></p>
+          <p className="text-orange-600">SAT-2085 IVA: <b>{q(iva)}</b> · Ret.Web ISR: <b>{q(isrFE)}</b></p>
+        </div>}
       </div>}
       <Sel label="Forma de pago" value={g.pagoCta} onChange={v=>setG(p=>({...p,pagoCta:v}))}
         options={BANCOS_PAGO.map(b=>({value:b.cta,label:b.nom}))}/>
       {p&&<PreviewPartida p={p} colorHdr="bg-orange-800"/>}
-      <Btn full color="orange" disabled={!g.total||!g.proveedor}
-        onClick={()=>{if(g.total&&g.proveedor){
-          onSave({...c,id:`c-${Date.now()}`,serie:g.serie});
+      <Btn full color="orange" disabled={!g.total}
+        onClick={()=>{if(g.total){
+          const provFinal=g.proveedor.trim()||"Ajuste contable";
+          onSave({...c,proveedor:provFinal,id:`c-${Date.now()}`,serie:g.serie});
           setG({fecha:g.fecha,proveedor:"",cta:g.cta,total:"",impPet:"",pagoCta:g.pagoCta,tipo:"FACT",serie:""});}}}>
         ✔ Registrar Gasto — P{num}
       </Btn>
