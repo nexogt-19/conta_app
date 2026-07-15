@@ -3,7 +3,9 @@ import * as XLSX from "xlsx";
 
 // ── PARTIDAS VENTAS — PRE-CARGADAS (P270-P273) ───────────────────
 // 4 partidas semanales de ventas junio 2026 — cuadradas ✅
-const PARTIDAS_INICIALES = [{"num": 270, "fecha": "2026-06-06", "tipo": "VENTA_SEM", "concepto": "Ventas Semana 1", "lineas": [{"cta": "1.1.17.004", "debe": 17299.2, "haber": 0, "conc": "Cobros BI — Semana 1"}, {"cta": "1.1.17.005", "debe": 18855.0, "haber": 0, "conc": "Cobros Banrural — Semana 1"}, {"cta": "4.1.01", "debe": 0, "haber": 32280.54, "conc": "Ventas Semana 1 — 17 facturas"}, {"cta": "2.1.03", "debe": 0, "haber": 3873.66, "conc": "IVA Debito Fiscal 12% — Semana 1"}]}, {"num": 271, "fecha": "2026-06-16", "tipo": "VENTA_SEM", "concepto": "Ventas Semana 2", "lineas": [{"cta": "1.1.17.004", "debe": 20315.4, "haber": 0, "conc": "Cobros BI — Semana 2"}, {"cta": "1.1.17.005", "debe": 79060.0, "haber": 0, "conc": "Cobros Banrural — Semana 2"}, {"cta": "4.1.01", "debe": 0, "haber": 88728.04, "conc": "Ventas Semana 2 — 18 facturas"}, {"cta": "2.1.03", "debe": 0, "haber": 10647.36, "conc": "IVA Debito Fiscal 12% — Semana 2"}]}, {"num": 272, "fecha": "2026-06-23", "tipo": "VENTA_SEM", "concepto": "Ventas Semana 3", "lineas": [{"cta": "1.1.17.004", "debe": 20373.6, "haber": 0, "conc": "Cobros BI — Semana 3"}, {"cta": "1.1.17.005", "debe": 10790.0, "haber": 0, "conc": "Cobros Banrural — Semana 3"}, {"cta": "4.1.01", "debe": 0, "haber": 27824.66, "conc": "Ventas Semana 3 — 16 facturas"}, {"cta": "2.1.03", "debe": 0, "haber": 3338.94, "conc": "IVA Debito Fiscal 12% — Semana 3"}]}, {"num": 273, "fecha": "2026-06-24", "tipo": "VENTA_SEM", "concepto": "Ventas Semana 4", "lineas": [{"cta": "1.1.17.005", "debe": 295.0, "haber": 0, "conc": "Cobros Banrural — Semana 4"}, {"cta": "1.1.03", "debe": 1435.2, "haber": 0, "conc": "CxC Pendiente — Semana 4"}, {"cta": "4.1.01", "debe": 0, "haber": 1544.82, "conc": "Ventas Semana 4 — 2 facturas"}, {"cta": "2.1.03", "debe": 0, "haber": 185.38, "conc": "IVA Debito Fiscal 12% — Semana 4"}]}, {"num": 274, "fecha": "2026-06-09", "tipo": "GASTO_SEM", "concepto": "Gastos Semana 1 (11 facturas)", "lineas": [{"cta": "6.1.10", "debe": 307.76, "haber": 0, "conc": "Combustible — Semana 1"}, {"cta": "6.1.14", "debe": 89.24, "haber": 0, "conc": "Insumos de Oficina — Semana 1"}, {"cta": "6.1.17", "debe": 445.53, "haber": 0, "conc": "Programas y Software — Semana 1"}, {"cta": "6.2.06", "debe": 1448.46, "haber": 0, "conc": "Paqueteria y Fletes — Semana 1"}, {"cta": "1.1.06", "debe": 274.92, "haber": 0, "conc": "IVA CF — Semana 1"}, {"cta": "1.1.02", "debe": 0, "haber": 2337.11, "conc": "Pago gastos Semana 1"}, {"cta": "2.1.01", "debe": 0, "haber": 228.8, "conc": "Pago gastos Semana 1"}]}, {"num": 275, "fecha": "2026-06-16", "tipo": "GASTO_SEM", "concepto": "Gastos Semana 2 (3 facturas)", "lineas": [{"cta": "6.1.17", "debe": 234.97, "haber": 0, "conc": "Mantenimiento y Reparaciones — Semana 2"}, {"cta": "6.2.06", "debe": 225.64, "haber": 0, "conc": "Servicio de Paqueteria — Semana 2"}, {"cta": "1.1.06", "debe": 55.28, "haber": 0, "conc": "IVA CF — Semana 2"}, {"cta": "1.1.17.004", "debe": 0, "haber": 263.17, "conc": "Pago gastos Semana 2"}, {"cta": "1.1.02", "debe": 0, "haber": 252.72, "conc": "Pago gastos Semana 2"}]}];
+const PARTIDAS_INICIALES = [{"num": 270, "fecha": "2026-06-06", "tipo": "VENTA_SEM", "concepto": "Ventas Semana 1", "lineas": [{"cta": "1.1.17.004", "debe": 17299.2, "haber": 0, "conc": "Cobros BI — Semana 1"}, {"cta": "1.1.17.005", "debe": 18855.0, "haber": 0, "conc": "Cobros Banrural — Semana 1"}, {"cta": "4.1.01", "debe": 0, "haber": 32280.54, "conc": "Ventas Semana 1 — 17 facturas"}, {"cta": "2.1.03", "debe": 0, "haber": 3873.66, "conc": "IVA Debito Fiscal 12% — Semana 1"}]}, {"num": 271, "fecha": "2026-06-16", "tipo": "VENTA_SEM", "concepto": "Ventas Semana 2", "lineas": [{"cta": "1.1.17.004", "debe": 20315.4, "haber": 0, "conc": "Cobros BI — Semana 2"}, {"cta": "1.1.17.005", "debe": 79060.0, "haber": 0, "conc": "Cobros Banrural — Semana 2"}, {"cta": "4.1.01", "debe": 0, "haber": 88728.04, "conc": "Ventas Semana 2 — 18 facturas"}, {"cta": "2.1.03", "debe": 0, "haber": 10647.36, "conc": "IVA Debito Fiscal 12% — Semana 2"}]}, {"num": 272, "fecha": "2026-06-23", "tipo": "VENTA_SEM", "concepto": "Ventas Semana 3", "lineas": [{"cta": "1.1.17.004", "debe": 20373.6, "haber": 0, "conc": "Cobros BI — Semana 3"}, {"cta": "1.1.17.005", "debe": 10790.0, "haber": 0, "conc": "Cobros Banrural — Semana 3"}, {"cta": "4.1.01", "debe": 0, "haber": 27824.66, "conc": "Ventas Semana 3 — 16 facturas"}, {"cta": "2.1.03", "debe": 0, "haber": 3338.94, "conc": "IVA Debito Fiscal 12% — Semana 3"}]}, {"num": 273, "fecha": "2026-06-24", "tipo": "VENTA_SEM", "concepto": "Ventas Semana 4", "lineas": [{"cta": "1.1.17.005", "debe": 295.0, "haber": 0, "conc": "Cobros Banrural — Semana 4"}, {"cta": "1.1.03", "debe": 1435.2, "haber": 0, "conc": "CxC Pendiente — Semana 4"}, {"cta": "4.1.01", "debe": 0, "haber": 1544.82, "conc": "Ventas Semana 4 — 2 facturas"}, {"cta": "2.1.03", "debe": 0, "haber": 185.38, "conc": "IVA Debito Fiscal 12% — Semana 4"}]}, {"num": 274, "fecha": "2026-06-09", "tipo": "GASTO_SEM", "concepto": "Gastos Semana 1 (11 facturas)", "lineas": [{"cta": "6.1.10", "debe": 307.76, "haber": 0, "conc": "Combustible — Semana 1"}, {"cta": "6.1.14", "debe": 89.24, "haber": 0, "conc": "Insumos de Oficina — Semana 1"}, {"cta": "6.1.17", "debe": 445.53, "haber": 0, "conc": "Programas y Software — Semana 1"}, {"cta": "6.2.06", "debe": 1448.46, "haber": 0, "conc": "Paqueteria y Fletes — Semana 1"}, {"cta": "1.1.06", "debe": 274.92, "haber": 0, "conc": "IVA CF — Semana 1"}, {"cta": "1.1.02", "debe": 0, "haber": 2337.11, "conc": "Pago gastos Semana 1"}, {"cta": "2.1.01", "debe": 0, "haber": 228.8, "conc": "Pago gastos Semana 1"}]}, {"num": 275, "fecha": "2026-06-16", "tipo": "GASTO_SEM", "concepto": "Gastos Semana 2 (3 facturas)", "lineas": [{"cta": "6.1.17", "debe": 234.97, "haber": 0, "conc": "Mantenimiento y Reparaciones — Semana 2"}, {"cta": "6.2.06", "debe": 225.64, "haber": 0, "conc": "Servicio de Paqueteria — Semana 2"}, {"cta": "1.1.06", "debe": 55.28, "haber": 0, "conc": "IVA CF — Semana 2"}, {"cta": "1.1.17.004", "debe": 0, "haber": 263.17, "conc": "Pago gastos Semana 2"}, {"cta": "1.1.02", "debe": 0, "haber": 252.72, "conc": "Pago gastos Semana 2"}]},
+  {"num":275,"fecha":"2026-06-16","tipo":"GASTO_SEM","concepto":"Gastos Semana 2 (3 facturas)","lineas":[{"cta":"6.1.17","debe":234.97,"haber":0,"conc":"Mantenimiento y Reparaciones — Semana 2"},{"cta":"6.2.06","debe":225.64,"haber":0,"conc":"Servicio de Paqueteria — Semana 2"},{"cta":"1.1.06","debe":55.28,"haber":0,"conc":"IVA CF — Semana 2"},{"cta":"1.1.17.004","debe":0,"haber":263.17,"conc":"Pago Banco Industrial — Semana 2"},{"cta":"1.1.02","debe":0,"haber":252.72,"conc":"Pago caja chica — Semana 2"}]}
+];
 
 // ── DATOS JUNIO 2026 — PRE-CARGADOS DESDE FEL ─────────────────
 // Ventas: 53 activas + 2 anuladas | Compras: 23 registros
@@ -14,6 +16,22 @@ const DATOS_INICIALES = {
 };
 
 // ── CATÁLOGO ───────────────────────────────────────────────────
+// ── CATÁLOGO DE PROVEEDORES ───────────────────────────────────
+const PROV_CAT_DEFAULT = {
+  "HETERIA":"6.2.06","CARGO EXPRESO":"6.2.06","UNO GUATEMALA":"6.2.04",
+  "AINNOVA":"6.2.04","SERCHI":"6.2.04","POSFILE":"6.1.17","TATMON":"6.1.17",
+  "DISTRIBUIDORA DE VEH":"6.1.10","PRICESMART":"6.1.14","KEILA":"6.1.14",
+  "NOVEX":"6.1.15","JESSICA GARCIA":"6.1.18","JULIO PALACIOS":"6.1.18",
+  "SERVICIOS INNOV":"6.1.13","CLARO":"6.1.13","TIGO":"6.1.13",
+  "COMUNICACIONES CELULARES":"6.1.13","VIVIAN":"6.1.10","CPMDG":"6.2.02",
+};
+function ctaDesdeProveedor(prov,provCat={}){
+  const pu=(prov||"").toUpperCase();
+  for(const[k,v] of Object.entries(provCat)) if(pu.includes(k.toUpperCase())) return v;
+  for(const[k,v] of Object.entries(PROV_CAT_DEFAULT)) if(pu.includes(k.toUpperCase())) return v;
+  return "6.1.14";
+}
+
 const CUENTAS = {
   "1.1.02":"Caja Chica","1.1.03":"Cuentas por Cobrar",
   "1.1.04":"Inventario","1.1.05":"Anticipos a Proveedores",
@@ -361,6 +379,10 @@ function parseFELCompras(ws){
 
 // ── PERSISTENCIA — Google Sheets + Storage local ──────────────
 const GAS_URL="https://script.google.com/macros/s/AKfycbyQlGGElFc20CwdqgB4978ZfBF53UbxQTcIl2n3A2Gafe8pYSQ9fJWJETYIdO7FRVIi/exec";
+// En Vercel: usar proxy /api/sheets para evitar CORS
+const API_BASE = typeof window!=="undefined" && window.location?.hostname!=="localhost" 
+  && !window.location?.hostname?.includes("claude") ? "" : "";
+const SHEETS_ENDPOINT = "/api/sheets";
 
 // Storage local (respaldo temporal)
 async function guardar(k,d){try{await window.storage.set(k,JSON.stringify(d));}catch(e){}}
@@ -399,966 +421,346 @@ async function cargarGS(tabla){
 
 // ── EXPORT — FORMATO IGUAL AL EXCEL EXISTENTE ─────────────────
 // Columnas: N° | FECHA | CUENTA | DESCRIPCION | CONCEPTO | PARCIAL | DEBE | HABER
-function xlsxCompatible(partidas, modo="completo"){
-  const wb=XLSX.utils.book_new();
-  const rows=[];
-  // Encabezado igual al archivo existente
-  rows.push(["","","","","","","",""]);
-  rows.push(["","","","","","","",""]);
-  rows.push(["N°","FECHA","CUENTA","DESCRIPCION","CONCEPTO / REFERENCIA","PARCIAL Q.","DEBE Q.","HABER Q."]);
+// ── ESTADOS FINANCIEROS DESDE PARTIDAS — VERSIÓN DETALLADA ──────
+function calcEF(partidas, periodos=null){
+  const acc={}, accAll={};
+  partidas.forEach(p=>p.lineas.forEach(l=>{
+    if(!accAll[l.cta]) accAll[l.cta]={d:0,h:0};
+    accAll[l.cta].d=r2(accAll[l.cta].d+l.debe);
+    accAll[l.cta].h=r2(accAll[l.cta].h+l.haber);
+    if(periodos){const f=(p.fecha||"").slice(0,7);if(f<periodos.desde||f>periodos.hasta)return;}
+    if(!acc[l.cta]) acc[l.cta]={d:0,h:0};
+    acc[l.cta].d=r2(acc[l.cta].d+l.debe);
+    acc[l.cta].h=r2(acc[l.cta].h+l.haber);
+  }));
+  const h=(c)=>r2(acc[c]?.h||0), d=(c)=>r2(acc[c]?.d||0), sal=(c)=>r2((accAll[c]?.d||0)-(accAll[c]?.h||0));
 
-  let totD=0,totH=0;
-  partidas.forEach(p=>{
-    const sd=r2(p.lineas.reduce((a,l)=>a+l.debe,0));
-    const sh=r2(p.lineas.reduce((a,l)=>a+l.haber,0));
-    p.lineas.forEach((l,i)=>{
-      rows.push([
-        i===0?p.num:"",
-        i===0?p.fecha:"",
-        l.cta,
-        CUENTAS[l.cta]||l.cta,
-        i===0?l.conc:l.conc,
-        "",
-        l.debe||"",
-        l.haber||"",
-      ]);
-    });
-    rows.push(["","","","",`TOTALES PARTIDA  ${p.num}`,"",sd,sh]);
-    totD+=sd; totH+=sh;
-  });
-  rows.push(["","","","","TOTALES GENERALES","",r2(totD),r2(totH)]);
+  // ── P&L con NCREs ────────────────────────────────────────
+  const ventas_brutas=h("4.1.01"), ncre_emitidas=d("4.1.01"), ventas_netas=r2(ventas_brutas-ncre_emitidas);
 
-  const ws=XLSX.utils.aoa_to_sheet(rows);
-  ws["!cols"]=[{wch:6},{wch:13},{wch:14},{wch:28},{wch:42},{wch:10},{wch:13},{wch:13}];
-  const shName=modo==="pegar"?"P270_en_adelante":"Libro_Diario_Jun2026";
-  XLSX.utils.book_append_sheet(wb,ws,shName);
+  // ── CV desglose desde inventario ─────────────────────────
+  const inv_mov=partidas.flatMap(p=>p.lineas.filter(l=>l.cta==="1.1.04").map(l=>({...l,fecha:p.fecha})));
+  const en_per=(f)=>!periodos||(((f||"").slice(0,7)>=periodos.desde)&&((f||"").slice(0,7)<=periodos.hasta));
+  const antes_per=(f)=>periodos&&(f||"").slice(0,7)<periodos.desde;
 
-  // Hoja de instrucciones
-  const inst=[
-    ["INSTRUCCIONES PARA PEGAR EN EL EXCEL EXISTENTE"],
-    [""],
-    ["1. Abra el archivo Libros_Contables_FINAL.xlsx"],
-    ["2. Vaya a la hoja 'Libro_Diario'"],
-    ["3. Ubíquese en la fila 1080 (después de TOTALES GENERALES actuales)"],
-    ["4. Borre la fila de TOTALES GENERALES actual"],
-    ["5. Copie las filas de datos de esta hoja (desde fila 4 en adelante)"],
-    ["6. Péguelas a partir de la fila donde estaba el TOTALES GENERALES"],
-    ["7. Los TOTALES GENERALES de esta hoja ya incluyen SOLO las partidas nuevas"],
-    [""],
-    [`Total partidas exportadas: ${partidas.length}`],
-    [`Rango: P${partidas[0]?.num||""} — P${partidas[partidas.length-1]?.num||""}`],
-    [`Fecha exportación: ${new Date().toLocaleDateString("es-GT")}`],
+  const inv_ini_saldo=r2(inv_mov.filter(l=>antes_per(l.fecha)).reduce((a,l)=>a+l.debe-l.haber,0));
+  const inv_ini=periodos?inv_ini_saldo:r2(sal("1.1.04")+d("5.1.01"));
+  const inv_per=inv_mov.filter(l=>en_per(l.fecha));
+  const c_local=r2(inv_per.filter(l=>l.debe>0&&!["IMPORT","LIQUIDAC"].some(k=>(l.conc||"").toUpperCase().includes(k))).reduce((a,l)=>a+l.debe,0));
+  const c_ext=r2(inv_per.filter(l=>l.debe>0&&["IMPORT","LIQUIDAC"].some(k=>(l.conc||"").toUpperCase().includes(k))).reduce((a,l)=>a+l.debe,0));
+  const ncre_recibidas_inv=r2(inv_per.filter(l=>l.haber>0&&["DEVOL","NCRE"].some(k=>(l.conc||"").toUpperCase().includes(k))).reduce((a,l)=>a+l.haber,0));
+
+  const cv_registrado=d("5.1.01"), inv_final=sal("1.1.04");
+  const ub=r2(ventas_netas-cv_registrado);
+
+  // ── Gastos con NCREs recibidas ───────────────────────────
+  const gastos_ctas=[
+    {cta:"6.1.10",nom:"Mantenimiento y Arrend. Vehiculos"},
+    {cta:"6.1.13",nom:"Telefonia e Internet"},
+    {cta:"6.1.14",nom:"Papeleria y Utiles de Oficina"},
+    {cta:"6.1.15",nom:"Servicios Contables"},
+    {cta:"6.1.16",nom:"Servicios Legales y Notariales"},
+    {cta:"6.1.17",nom:"Mantenimiento y Reparaciones"},
+    {cta:"6.1.18",nom:"Servicios Tecnicos"},
+    {cta:"6.1.19",nom:"Gastos de Afiliacion"},
+    {cta:"6.2.02",nom:"Comisiones sobre Ventas"},
+    {cta:"6.2.03",nom:"Viaticos y Gastos de Viaje"},
+    {cta:"6.2.04",nom:"Combustible y Lubricantes"},
+    {cta:"6.2.06",nom:"Servicio de Paqueteria"},
+    {cta:"6.3.01",nom:"Ajuste de Inventario"},
   ];
-  const ws2=XLSX.utils.aoa_to_sheet(inst);
-  ws2["!cols"]=[{wch:70}];
-  XLSX.utils.book_append_sheet(wb,ws2,"Instrucciones");
-  XLSX.writeFile(wb,"NexoGlobal_Junio2026_P270enAdelante.xlsx");
+  const gastos=gastos_ctas.map(({cta,nom})=>({cta,nom,debe:d(cta),haber:h(cta),neto:r2(d(cta)-h(cta))}));
+  const tot_gas=r2(gastos.reduce((a,g)=>a+g.neto,0));
+  const ncre_en_gastos=r2(gastos.reduce((a,g)=>a+g.haber,0));
+
+  const uo=r2(ub-tot_gas), isr_pag=r2(d("6.4.01")-h("6.4.01"));
+  const isr_dev=r2(Math.max(uo,0)*0.25), reserva=r2(Math.max(uo,0)*0.05);
+  const un=r2(uo-isr_pag-reserva);
+
+  // ── Balance ──────────────────────────────────────────────
+  const bancos=r2(sal("1.1.17.004")+sal("1.1.17.005")+sal("1.1.17.006")+sal("1.1.02"));
+  const act_c=r2(bancos+sal("1.1.03")+sal("1.1.04")+sal("1.1.05")+sal("1.1.06")+sal("1.1.08")+sal("1.1.09"));
+  const act_f=r2(sal("1.2.01")), tot_act=r2(act_c+act_f);
+  const cxp=r2(-sal("2.1.01")), prest=r2(-sal("2.1.02")), iva_dt=r2(-sal("2.1.03"));
+  const ant_c=r2(-sal("2.1.04")), dep_xi=r2(-sal("2.1.05")), isr_r=r2(-sal("2.1.06"));
+  const tot_pas=r2(cxp+prest+iva_dt+ant_c+dep_xi+isr_r);
+  const capital=r2(-sal("3.1.01")-sal("3.1.02"));
+  const un_bal=r2(uo-isr_pag), tot_cap=r2(capital+un_bal), tot_pc=r2(tot_pas+tot_cap);
+
+  return{ventas_brutas,ncre_emitidas,ventas_netas,
+    inv_ini,c_local,c_ext,ncre_recibidas_inv,
+    cv_registrado,inv_final,ub,gastos,ncre_en_gastos,tot_gas,
+    uo,isr_pag,isr_dev,reserva,un,
+    margen_bruto:ventas_netas?r2(ub/ventas_netas):0,
+    margen_op:ventas_netas?r2(uo/ventas_netas):0,
+    bancos,act_c,act_f,tot_act,cxp,prest,iva_dt,ant_c,dep_xi,isr_r,
+    tot_pas,capital,un_bal,tot_cap,tot_pc,dif_balance:r2(tot_act-tot_pc)};
 }
 
-function xlsxBanco(ventas){
-  const wb=XLSX.utils.book_new();
-  const cuentas=[
-    {cta:"1.1.17.004",nom:"Banco Industrial Q"},
-    {cta:"1.1.17.005",nom:"Banrural Q"},
-    {cta:"1.1.03",nom:"CxC Pendiente"},
-  ];
-  // Hoja resumen
-  const resumen=[
-    ["CONCILIACIÓN BANCARIA — CORPORACIÓN NEXO GLOBAL S.A.","","",""],
-    ["NIT: 120767147 | Período: Junio 2026","","",""],
-    [""],
-    ["Cuenta","N° Depósitos","Total Q",""],
-  ];
-  cuentas.forEach(ct=>{
-    const movs=ventas.flatMap(v=>(v.cobros||[]).filter(c=>
-      (c.tipo==="banco"&&c.cta===ct.cta)||
-      (ct.cta==="1.1.17.004"&&c.tipo==="visa")
-    ));
-    const tot=r2(movs.reduce((s,c)=>s+(c.tipo==="visa"
-      ?r2(Number(c.visaNet||0)+Number(c.visaRet||0)+Number(c.visaCom||0)+Number(c.visaMem||0))
-      :Number(c.monto||0)),0));
-    if(tot>0) resumen.push([ct.nom,movs.length,tot,""]);
-  });
-  const totG=r2(ventas.flatMap(v=>v.cobros||[]).reduce((s,c)=>s+(c.tipo==="visa"
-    ?r2(Number(c.visaNet||0)+Number(c.visaRet||0)+Number(c.visaCom||0)+Number(c.visaMem||0))
-    :Number(c.monto||0)),0));
-  resumen.push([""],["TOTAL COBROS","",totG,""]);
-  const ws0=XLSX.utils.aoa_to_sheet(resumen);
-  ws0["!cols"]=[{wch:30},{wch:15},{wch:15},{wch:5}];
-  XLSX.utils.book_append_sheet(wb,ws0,"Resumen");
 
-  // Hoja detalle por semana y banco
-  const SEM=[{l:"Semana 1",d1:1,d2:9},{l:"Semana 2",d1:10,d2:16},
-             {l:"Semana 3",d1:17,d2:23},{l:"Semana 4",d1:24,d2:31}];
-  const det=[["Semana","Fecha","Serie DTE","Cliente","Banco/Cuenta","N° Boleta/Referencia","Monto Q"]];
-  const getDay=f=>{const m=String(f||"").match(/-(\d{2})(?:T|$)/);return m?parseInt(m[1]):0;};
-  ventas.filter(v=>v.estado!=="ANULADO").forEach(v=>{
-    const sem=SEM.find(s=>{const d=getDay(v.fecha);return d>=s.d1&&d<=s.d2;});
-    (v.cobros||[]).forEach(c=>{
-      if(c.tipo==="banco"){
-        det.push([sem?.l||"",v.fecha?.slice(0,10),v.serie,v.cliente,
-          CUENTAS[c.cta]||c.cta,c.doc||"",Number(c.monto||0)]);
-      }
-      if(c.tipo==="visa"){
-        const tot=r2(Number(c.visaNet||0)+Number(c.visaRet||0)+Number(c.visaCom||0)+Number(c.visaMem||0));
-        det.push([sem?.l||"",v.fecha?.slice(0,10),v.serie,v.cliente,
-          "VISA/Tarjeta",c.doc||"",tot]);
-      }
-    });
-  });
-  det.push(["","","","","","TOTAL",totG]);
-  const ws1=XLSX.utils.aoa_to_sheet(det);
-  ws1["!cols"]=[{wch:10},{wch:12},{wch:12},{wch:30},{wch:22},{wch:20},{wch:12}];
-  XLSX.utils.book_append_sheet(wb,ws1,"Detalle Depositos");
-  XLSX.writeFile(wb,"ConciliacionBancaria_Junio2026.xlsx");
-}
+function calcEFDummy(partidas, periodos){return calcEF(partidas,periodos);}
 
-function xlsxMayor(partidas){
-  // Una sola hoja con TODAS las cuentas — separadas por encabezado
-  const ctas=[...new Set(partidas.flatMap(p=>p.lineas.map(l=>l.cta)))].sort();
-  const wb=XLSX.utils.book_new();
-  const rows=[
-    ["LIBRO MAYOR — CORPORACION NEXO GLOBAL S.A.","","","","",""],
-    ["NIT: 120767147 | Período: Junio 2026","","","","",""],
-    ["","","","","",""],
-  ];
+// ── ESTADOS FINANCIEROS EN TIEMPO REAL ────────────────────────
+function EstadosFinancierosView({partidas}){
+  const[vista,setVista]=useState("pyl");
+  const[showRef,setShowRef]=useState(false);
+  const ef=useMemo(()=>calcEF(partidas),[partidas]);
 
-  ctas.forEach(cta=>{
-    // Encabezado de cuenta
-    rows.push([`CUENTA: ${cta} — ${CUENTAS[cta]||cta}`,"","","","",""]);
-    rows.push(["Asiento","Fecha","Concepto","Debe Q","Haber Q","Saldo Q"]);
-    let s=0;
-    partidas.forEach(p=>p.lineas.filter(l=>l.cta===cta).forEach(l=>{
-      s=r2(s+l.debe-l.haber);
-      rows.push([p.num,p.fecha,l.conc,l.debe||"",l.haber||"",s]);
-    }));
-    const td=r2(rows.filter(r=>typeof r[3]==="number").slice(-99)
-      .reduce((a,r)=>a+(typeof r[3]==="number"?r[3]:0),0)); // approx
-    // Calcular totales correctamente
-    let tD=0,tH=0;
-    partidas.forEach(p=>p.lineas.filter(l=>l.cta===cta).forEach(l=>{tD+=l.debe;tH+=l.haber;}));
-    rows.push(["TOTALES","","",r2(tD),r2(tH),r2(tD-tH)]);
-    rows.push(["","","","","",""]);  // línea en blanco entre cuentas
-  });
+  const Fil=({v,lbl})=>(
+    <button onClick={()=>setVista(v)}
+      className={`px-3 py-1.5 rounded-lg text-xs font-bold ${vista===v?"bg-blue-700 text-white":"bg-gray-100 text-gray-600"}`}>
+      {lbl}
+    </button>
+  );
 
-  const ws=XLSX.utils.aoa_to_sheet(rows);
-  ws["!cols"]=[{wch:10},{wch:12},{wch:42},{wch:13},{wch:13},{wch:14}];
-  XLSX.utils.book_append_sheet(wb,ws,"Libro_Mayor");
-  XLSX.writeFile(wb,"LibroMayor_Junio2026.xlsx");
-}
-
-// ── UI BASE ────────────────────────────────────────────────────
-const Btn=({onClick,children,color="blue",size="md",disabled=false,full=false})=>{
-  const c={blue:"bg-blue-700 hover:bg-blue-800",green:"bg-green-700 hover:bg-green-800",
-    orange:"bg-orange-600 hover:bg-orange-700",red:"bg-red-600 hover:bg-red-700",
-    gray:"bg-gray-500 hover:bg-gray-600",purple:"bg-purple-700 hover:bg-purple-800",
-    teal:"bg-teal-700 hover:bg-teal-800",yellow:"bg-yellow-600 hover:bg-yellow-700"}[color];
-  const s={md:"px-4 py-2 text-sm",sm:"px-3 py-1.5 text-xs",lg:"px-5 py-3 text-base",xs:"px-2 py-1 text-xs"}[size];
-  return <button onClick={onClick} disabled={disabled}
-    className={`${c} ${s} ${full?"w-full":""} text-white font-semibold rounded-lg disabled:bg-gray-200 disabled:text-gray-400 transition-colors`}>{children}</button>;
-};
-const Card=({title,value,sub,color="blue"})=>{
-  const c={blue:"border-blue-500 bg-blue-50",green:"border-green-500 bg-green-50",orange:"border-orange-500 bg-orange-50",red:"border-red-500 bg-red-50"}[color];
-  return <div className={`border-l-4 rounded-lg p-3 ${c}`}>
-    <p className="text-xs text-gray-500 font-semibold uppercase tracking-wide">{title}</p>
-    <p className="text-lg font-bold text-gray-800 mt-0.5">{value}</p>
-    {sub&&<p className="text-xs text-gray-400 mt-0.5">{sub}</p>}
-  </div>;
-};
-const Inp=({label,type="text",value,onChange,placeholder="",min,step,className=""})=>
-  <div className={className}>
-    {label&&<label className="block text-xs font-semibold text-gray-600 mb-1">{label}</label>}
-    <input type={type} value={value} onChange={e=>onChange(e.target.value)} placeholder={placeholder} min={min} step={step}
-      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white"/>
-  </div>;
-const Sel=({label,value,onChange,options,className=""})=>
-  <div className={className}>
-    {label&&<label className="block text-xs font-semibold text-gray-600 mb-1">{label}</label>}
-    <select value={value} onChange={e=>onChange(e.target.value)}
-      className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
-      {options.map(o=><option key={o.value||o} value={o.value||o}>{o.label||o}</option>)}
-    </select>
-  </div>;
-
-const PreviewPartida=({p,colorHdr="bg-blue-900"})=>{
-  if(!p||!p.lineas.length) return null;
-  const sd=r2(p.lineas.reduce((a,l)=>a+l.debe,0)),sh=r2(p.lineas.reduce((a,l)=>a+l.haber,0));
-  const ok=Math.abs(sd-sh)<0.02;
-  return <div className="border rounded-lg overflow-hidden text-xs shadow-sm">
-    <div className={`${colorHdr} text-white px-3 py-1.5 flex justify-between font-semibold`}>
-      <span>Vista previa — P{p.num}</span>
-      <span>{ok?<span className="text-green-300">✅ Cuadra</span>:<span className="text-red-300">⚠️ Dif Q{r2(Math.abs(sd-sh)).toFixed(2)}</span>}</span>
-    </div>
-    {p.lineas.map((l,i)=>(
-      <div key={i} className={`grid grid-cols-4 px-3 py-0.5 ${i%2?"bg-white":"bg-gray-50"}`}>
-        <span className="font-mono text-blue-700">{l.cta}</span>
-        <span className="text-gray-600 truncate">{CUENTAS[l.cta]||l.cta}</span>
-        <span className="text-right text-green-700 font-semibold">{l.debe?q(l.debe):""}</span>
-        <span className="text-right text-red-700 font-semibold">{l.haber?q(l.haber):""}</span>
+  const Row=({lbl,val,neg=false,bold,sub,pct,color,ref,indent=0})=>(
+    <div className={`flex items-center px-3 py-1.5 gap-2 ${sub?"bg-blue-50 border-t border-b border-blue-100":""}`}>
+      {indent>0&&<span style={{width:indent*10}} className="shrink-0"/>}
+      <div className="flex-1">
+        <span className={`text-xs ${sub?"text-blue-800 font-bold":bold?"font-semibold text-gray-800":"text-gray-700"} ${color||""}`}>
+          {neg&&<span className="text-red-500 mr-1">(−)</span>}{lbl}
+        </span>
+        {showRef&&ref&&<span className="text-xs text-blue-400 ml-1 font-mono">[{ref}]</span>}
       </div>
-    ))}
-    <div className="grid grid-cols-4 px-3 py-1.5 bg-gray-100 font-bold border-t">
-      <span className="col-span-2">TOTALES P{p.num}</span>
-      <span className="text-right">{q(sd)}</span><span className="text-right">{q(sh)}</span>
+      <div className="shrink-0 text-right">
+        <span className={`text-xs font-mono ${sub?"text-blue-800 font-bold":bold?"font-semibold":""} ${color||""} ${val<0?"text-red-600":""}`}>
+          {val===null||val===undefined?"":Math.abs(val)<0.01?"Q 0.00":val<0?`(${q(Math.abs(val))})`:q(val)}
+        </span>
+        {pct!==undefined&&Math.abs(pct)>0.001&&<span className="text-xs text-gray-400 ml-1">{(pct*100).toFixed(1)}%</span>}
+      </div>
     </div>
-  </div>;
-};
+  );
+  const Sec=({lbl})=><div className="bg-gray-800 text-white px-3 py-1.5 text-xs font-bold uppercase tracking-wide mt-1">{lbl}</div>;
+  const Div=()=><div className="border-t border-gray-100 my-0.5"/>;
 
-// ── COBROS EDITOR ─────────────────────────────────────────────
-function CobrosEditor({cobros,onChange,totalFactura}){
-  const totalCobros=calcTotalCobros(cobros);
-  const diff=r2(totalFactura-totalCobros);
-  const ok=Math.abs(diff)<0.50; // tolerancia Q0.50 para redondeos bancarios
-  const addCobro=(tipo)=>{
-    const b={id:uid(),tipo,doc:"",monto:""};
-    if(tipo==="banco")b.cta="1.1.17.004";
-    if(tipo==="efectivo")b.cta="1.1.02";
-    if(tipo==="credito")b.cta="2.1.01";
-    if(tipo==="deposito")b.cta="2.1.05";
-    if(tipo==="visa")Object.assign(b,{cta:"VISA",visaNet:"",visaRet:"",visaCom:"",visaMem:""});
-    onChange([...cobros,b]);
-  };
-  const upd=(id,f,v)=>onChange(cobros.map(c=>c.id===id?{...c,[f]:v}:c));
-  const del=(id)=>onChange(cobros.filter(c=>c.id!==id));
-  const autoVisa=(id)=>{
-    // totalFactura ya es el total c/IVA del VISA
-    const thisCobro=cobros.find(c=>c.id===id);
-    const tot=r2(Number(thisCobro?.visaNet||totalFactura)); // total c/IVA del cobro VISA
-    const ivaV=r2(tot/1.12*0.12);    // IVA sobre el monto VISA
-    const ret=r2(ivaV*0.15);          // retención 15% sobre IVA
-    const cb=r2(tot*0.0625);          // comisión base 6.25%
-    const ci=r2(cb*0.12);             // IVA de la comisión
-    const net=r2(tot-ret-cb-ci-25);   // neto depositado
-    onChange(cobros.map(c=>c.id===id?{...c,visaNet:net.toFixed(2),visaRet:ret.toFixed(2),visaCom:(cb+ci).toFixed(2),visaMem:"25.00"}:c));
-  };
   return(
     <div className="space-y-3">
-      {totalFactura>0&&(
-        <div className={`rounded-lg px-4 py-2.5 flex items-center justify-between text-sm ${ok?"bg-green-50 border border-green-300":"bg-red-50 border border-red-300"}`}>
-          <span className="text-gray-600">Total factura <b>{q(totalFactura)}</b> · Cobros <b>{q(totalCobros)}</b></span>
-          <span className={`font-bold ${ok?"text-green-700":"text-red-600"}`}>
-            {ok?(Math.abs(diff)<0.02?"✅ Cuadra":`✅ Cuadra (dif Q${Math.abs(diff).toFixed(2)} redondeo)`):`⚠️ Falta ${q(Math.abs(diff))}`}
-          </span>
+      <div className="flex gap-2 flex-wrap items-center">
+        <Fil v="pyl" lbl="📊 Resultados"/>
+        <Fil v="balance" lbl="⚖️ Balance"/>
+        <Fil v="isr" lbl="🏦 ISR"/>
+        <button onClick={()=>setShowRef(p=>!p)}
+          className={`px-3 py-1.5 rounded-lg text-xs font-bold ml-auto border ${showRef?"bg-amber-500 text-white border-amber-500":"bg-amber-50 text-amber-700 border-amber-300"}`}>
+          {showRef?"✅ Ref. Mayor ON":"🔍 Mostrar ref. Mayor"}
+        </button>
+      </div>
+      {showRef&&<div className="bg-amber-50 border border-amber-200 rounded-xl px-3 py-2 text-xs text-amber-800">
+        💡 Código <span className="font-mono text-blue-600">[entre corchetes]</span> = cuenta del Libro Mayor que origina ese número.
+      </div>}
+
+      {vista==="pyl"&&(
+        <div className="border rounded-xl overflow-hidden">
+          <div className="bg-blue-900 text-white px-3 py-2 flex justify-between">
+            <span className="font-bold text-sm">ESTADO DE RESULTADOS</span>
+            <span className="text-xs text-blue-300">Acumulado</span>
+          </div>
+          <Sec lbl="Ingresos del Período"/>
+          <Row lbl="Ventas de Bienes" val={ef.ventas_brutas} ref="4.1.01 HABER" pct={1}/>
+          {ef.ncre_emitidas>0.01&&<Row lbl="Devoluciones / NCRE Emitidas" val={ef.ncre_emitidas} neg ref="4.1.01 DEBE" color="text-red-600" indent={1}/>}
+          <Row lbl="VENTAS NETAS" val={ef.ventas_netas} sub bold ref="4.1.01 neto"/><Div/>
+
+          <Sec lbl="Costo de Ventas"/>
+          <Row lbl="Inventario Inicial" val={ef.inv_ini} ref="1.1.04 inicio" indent={1}/>
+          {ef.c_local>0.01&&<Row lbl="(+) Compras Locales" val={ef.c_local} ref="1.1.04 DEBE local" indent={2}/>}
+          {ef.c_ext>0.01&&<Row lbl="(+) Importaciones" val={ef.c_ext} ref="1.1.04 DEBE import." indent={2}/>}
+          {ef.ncre_recibidas_inv>0.01&&<Row lbl="(−) NCRE Recibidas Compras" val={ef.ncre_recibidas_inv} neg ref="1.1.04 HABER devol." color="text-red-600" indent={2}/>}
+          <Row lbl="Mercadería Disponible" val={r2(ef.inv_ini+ef.c_local+ef.c_ext-ef.ncre_recibidas_inv)} bold indent={1}/>
+          <Row lbl="(−) Inventario Final" val={ef.inv_final} neg ref="1.1.04 saldo final" color="text-red-600" indent={2}/>
+          <Row lbl="COSTO DE LO VENDIDO" val={ef.cv_registrado} sub bold ref="5.1.01 DEBE"/><Div/>
+          <Row lbl="UTILIDAD BRUTA EN VENTAS" val={ef.ub} sub bold pct={ef.margen_bruto}
+            color={ef.ub>=0?"text-green-800":"text-red-800"}/><Div/>
+
+          <Sec lbl="Gastos de Operación"/>
+          {ef.gastos.map((g,i)=>g.neto>0.01?(
+            <div key={i}>
+              <Row lbl={g.nom} val={g.neto} ref={g.cta} indent={1}
+                pct={ef.ventas_netas?g.neto/ef.ventas_netas:0}/>
+              {g.haber>0.01&&<Row lbl={"(−) Notas de Crédito Recibidas — "+g.cta} val={g.haber}
+                neg ref={g.cta+" HABER"} color="text-red-500" indent={2}/>}
+            </div>
+          ):null)}
+          <Row lbl="TOTAL GASTOS" val={ef.tot_gas} sub bold ref="6.x.xx neto"/><Div/>
+
+          <Row lbl="UTILIDAD DE OPERACIÓN" val={ef.uo} sub bold pct={ef.margen_op}
+            color={ef.uo>=0?"text-green-800":"text-red-800"}/>
+          <Row lbl="ISR pagado en libros" val={ef.isr_pag} ref="6.4.01 DEBE" neg indent={1}/>
+          <Row lbl="Reserva Legal 5% (estimada)" val={ef.reserva} neg indent={1}/>
+          <Row lbl="UTILIDAD NETA DEL PERÍODO" val={ef.un} sub bold
+            color={ef.un>=0?"text-green-800":"text-red-800"}/>
+          <div className="bg-gray-50 px-3 py-2 text-xs text-gray-500 grid grid-cols-2 gap-1">
+            <span>Margen bruto: <b>{(ef.margen_bruto*100).toFixed(1)}%</b></span>
+            <span>Margen op: <b>{(ef.margen_op*100).toFixed(1)}%</b></span>
+            <span>ISR devengado 25%: <b>{q(ef.isr_dev)}</b></span>
+            <span>ISR pagado libros: <b>{q(ef.isr_pag)}</b></span>
+          </div>
         </div>
       )}
-      {cobros.map((c,idx)=>{
-        const med=MEDIOS_PAGO.find(m=>m.tipo===c.tipo);
-        return(
-          <div key={c.id} className="border border-gray-200 rounded-xl overflow-hidden">
-            <div className="flex items-center gap-2 px-3 py-2 bg-gray-50 border-b">
-              <span>{med?.icon||"💳"}</span>
-              <span className="text-xs font-bold text-gray-700 flex-1">Cobro {idx+1} — {med?.nom||c.tipo}</span>
-              {c.tipo==="banco"&&(
-                <select value={c.cta} onChange={e=>upd(c.id,"cta",e.target.value)}
-                  className="text-xs border rounded px-2 py-1 bg-white">
-                  <option value="1.1.17.004">BI Q</option>
-                  <option value="1.1.17.005">Banrural Q</option>
-                  <option value="1.1.17.006">BI USD</option>
-                  <option value="1.1.03">CxC Pendiente</option>
-                </select>
-              )}
-              <button onClick={()=>del(c.id)} className="text-red-400 hover:text-red-600 font-bold text-lg px-1">×</button>
-            </div>
-            <div className="px-3 py-2 space-y-2">
-              {(c.tipo==="banco"||c.tipo==="efectivo"||c.tipo==="credito")&&(
-                <div className="grid grid-cols-2 gap-2">
-                  <Inp label="N° Boleta / Depósito" value={c.doc} onChange={v=>upd(c.id,"doc",v)} placeholder="Ej: 11236364"/>
-                  <Inp label="Monto Q" type="number" step="0.01" value={c.monto} onChange={v=>upd(c.id,"monto",v)} placeholder="0.00"/>
-                </div>
-              )}
-              {c.tipo==="deposito"&&(
-                <div className="space-y-1">
-                  <div className="grid grid-cols-2 gap-2">
-                    <Inp label="N° Referencia" value={c.doc} onChange={v=>upd(c.id,"doc",v)}/>
-                    <Inp label="+aplicar / −exceso" type="number" step="0.01" value={c.monto} onChange={v=>upd(c.id,"monto",v)} placeholder="+200 ó −15"/>
-                  </div>
-                  <p className="text-xs text-gray-500">Positivo = aplicar saldo 2.1.05 · Negativo = registrar exceso</p>
-                </div>
-              )}
-              {c.tipo==="visa"&&(
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs text-purple-700 font-semibold">Desglose VISA</span>
-                    <button onClick={()=>autoVisa(c.id)} className="text-xs bg-purple-600 text-white px-3 py-1 rounded-full">⚡ Auto-calcular</button>
-                  </div>
-                  <Inp label="N° Referencia / Lote" value={c.doc} onChange={v=>upd(c.id,"doc",v)} placeholder="17425"/>
-                  <div className="grid grid-cols-2 gap-2">
-                    <Inp label="Neto depositado BI" type="number" step="0.01" value={c.visaNet} onChange={v=>upd(c.id,"visaNet",v)}/>
-                    <Inp label="IVA Retenido 15%" type="number" step="0.01" value={c.visaRet} onChange={v=>upd(c.id,"visaRet",v)}/>
-                    <Inp label="Comisión bruta" type="number" step="0.01" value={c.visaCom} onChange={v=>upd(c.id,"visaCom",v)}/>
-                    <Inp label="Membresía Q25" type="number" step="0.01" value={c.visaMem} onChange={v=>upd(c.id,"visaMem",v)}/>
-                  </div>
-                </div>
-              )}
-            </div>
+
+      {vista==="balance"&&(
+        <div className="border rounded-xl overflow-hidden">
+          <div className="bg-blue-900 text-white px-3 py-2 flex justify-between">
+            <span className="font-bold text-sm">BALANCE GENERAL</span>
+            <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${Math.abs(ef.dif_balance)<0.10?"bg-green-500":"bg-red-500"} text-white`}>
+              {Math.abs(ef.dif_balance)<0.10?"✅ CUADRA":"⚠️ Dif Q"+ef.dif_balance.toFixed(2)}
+            </span>
           </div>
-        );
-      })}
-      <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">+ Agregar forma de cobro</p>
-      <div className="grid grid-cols-3 gap-2">
-        {[{tipo:"banco",icon:"🏦",label:"Depósito banco"},{tipo:"efectivo",icon:"💵",label:"Efectivo"},
-          {tipo:"visa",icon:"💳",label:"Tarjeta VISA"},{tipo:"deposito",icon:"❓",label:"Dep. x Identificar"},
-          {tipo:"credito",icon:"📋",label:"Crédito"}].map(({tipo,icon,label})=>(
-          <button key={tipo} onClick={()=>addCobro(tipo)}
-            className="flex flex-col items-center py-2 border-2 border-dashed border-gray-300 rounded-xl text-xs text-gray-600 hover:border-blue-400 hover:bg-blue-50 transition-all">
-            <span className="text-xl mb-0.5">{icon}</span><span className="font-semibold">{label}</span>
-          </button>
-        ))}
-      </div>
+          <Sec lbl="Activo"/>
+          <Row lbl="Caja y Bancos" val={ef.bancos} ref="1.1.02+1.1.17.x" indent={1}/>
+          <Row lbl="Inventario Final" val={ef.inv_final} ref="1.1.04" indent={1}/>
+          {ef.act_c-ef.bancos-ef.inv_final>0.01&&<Row lbl="Otros Activos Corrientes" val={r2(ef.act_c-ef.bancos-ef.inv_final)} ref="1.1.03/05/06/08/09" indent={1}/>}
+          <Row lbl="Total Activo Circulante" val={ef.act_c} bold/>
+          {ef.act_f>0.01&&<Row lbl="Mobiliario y Equipo" val={ef.act_f} ref="1.2.01" indent={1}/>}
+          <Row lbl="TOTAL ACTIVO" val={ef.tot_act} sub bold/>
+          <Div/>
+          <Sec lbl="Pasivo"/>
+          {ef.cxp>0.01&&<Row lbl="Cuentas por Pagar" val={ef.cxp} ref="2.1.01" indent={1}/>}
+          {ef.prest>0.01&&<Row lbl="Prestamos por Pagar" val={ef.prest} ref="2.1.02" indent={1}/>}
+          {Math.abs(ef.iva_dt)>0.01&&<Row lbl="IVA Debito Fiscal" val={ef.iva_dt} ref="2.1.03" indent={1}/>}
+          {ef.ant_c>0.01&&<Row lbl="Anticipos de Clientes" val={ef.ant_c} ref="2.1.04" indent={1}/>}
+          {ef.dep_xi>0.01&&<Row lbl="Depositos x Identificar" val={ef.dep_xi} ref="2.1.05" indent={1}/>}
+          {ef.isr_r>0.01&&<Row lbl="ISR Retenido x Pagar" val={ef.isr_r} ref="2.1.06" indent={1}/>}
+          <Row lbl="TOTAL PASIVO" val={ef.tot_pas} bold/>
+          <Div/>
+          <Sec lbl="Capital y Reservas"/>
+          <Row lbl="Capital Socios" val={ef.capital} ref="3.1.x" indent={1}/>
+          <Row lbl="Utilidad del Período" val={ef.un_bal} ref="P&L acumulado" indent={1} color="text-blue-700"/>
+          <Row lbl="TOTAL CAPITAL" val={ef.tot_cap} bold/>
+          <Row lbl="TOTAL PASIVO + CAPITAL" val={ef.tot_pc} sub bold/>
+        </div>
+      )}
+      {vista==="isr"&&<ISRDashboard partidas={partidas} ef={ef}/>}
     </div>
   );
 }
 
-// ── FORM VENTA ────────────────────────────────────────────────
-function FormVenta({onSave,num}){
-  const[f,setF]=useState({fecha:new Date().toISOString().slice(0,10),serie:"",cliente:"",
-    totalConIva:"",cobros:[]});
-  // SAT certifica el total c/IVA — app calcula base e IVA automáticamente
-  const totalConIva=r2(f.totalConIva);
-  const base=r2(totalConIva/1.12);
-  const iva=r2(totalConIva-base);   // evita doble redondeo
-  const total=totalConIva;           // total exacto = lo que depositó el cliente
-  const clienteFinal=f.cliente.trim()||"Consumidor Final";
-  const v={...f,cliente:clienteFinal,base,iva,total,totalConIva:total};
-  const p=base>0?genPartidaVenta(v,num):null;
-  return(
-    <div className="space-y-4">
-      <div className="grid grid-cols-2 gap-3">
-        <Inp label="Fecha" type="date" value={f.fecha} onChange={d=>setF(p=>({...p,fecha:d}))}/>
-        <Inp label="Serie DTE (8 chars)" value={f.serie} placeholder="BF23B23A"
-          onChange={s=>setF(p=>({...p,serie:s.toUpperCase().slice(0,8)}))}/>
-      </div>
-      <Inp label="Cliente (opcional — deje vacío para CF)" value={f.cliente}
-        placeholder="Consumidor Final"
-        onChange={c=>setF(p=>({...p,cliente:c}))}/>
-      <Inp label="Total c/IVA (Q) — igual al comprobante SAT" type="number" step="0.01"
-        value={f.totalConIva} onChange={b=>setF(p=>({...p,totalConIva:b}))}
-        placeholder="Ej: 1,120.00"/>
-      {totalConIva>0&&<div className="grid grid-cols-3 gap-2 bg-blue-50 rounded-lg p-3 text-sm text-center border border-blue-200">
-        <div><div className="text-xs text-gray-500">Base s/IVA</div><b>{q(base)}</b></div>
-        <div><div className="text-xs text-gray-500">IVA 12% (auto)</div><b className="text-blue-600">{q(iva)}</b></div>
-        <div><div className="text-xs text-gray-500">Total c/IVA</div><b className="text-green-600">{q(total)}</b></div>
-      </div>}
-      <div className="border-t pt-3">
-        <p className="text-sm font-bold text-gray-700 mb-3">💳 Forma(s) de cobro <span className="text-xs font-normal text-gray-400">— puede mezclar varias</span></p>
-        <CobrosEditor cobros={f.cobros} totalFactura={total} onChange={c=>setF(p=>({...p,cobros:c}))}/>
-      </div>
-      {p&&<PreviewPartida p={p}/>}
-      <Btn full color="green" disabled={!totalConIva}
-        onClick={()=>{if(totalConIva){onSave({...v,cobros:f.cobros,id:`v-${Date.now()}`});
-          setF({fecha:f.fecha,serie:"",cliente:"",totalConIva:"",cobros:[]});}}}>
-        ✔ Registrar Venta — P{num}
-      </Btn>
-    </div>
-  );
-}
 
-// ── FORM GASTO ────────────────────────────────────────────────
-function FormGasto({onSave,num}){
-  const[g,setG]=useState({fecha:new Date().toISOString().slice(0,10),proveedor:"",
-    cta:"6.1.14",total:"",impPet:"",pagoCta:"1.1.02",tipo:"FACT",serie:""});
-  const cat=GASTOS_CAT.find(c=>c.cta===g.cta)||{iva:"normal"};
-  let base=0,iva=0,isrFE=0;
-  if(cat.iva==="fpeq"||g.tipo==="FPEQ"){base=r2(g.total);iva=0;}
-  else if(g.tipo==="FESP"){
-    base=r2(r2(g.total)/1.12);    // base s/IVA = total ÷ 1.12
-    iva=r2(base*0.12);             // IVA 12% sobre base → SAT-2085
-    isrFE=r2(base*0.05);          // ISR 5% sobre base → Retenciones Web
-  }
-  else if(cat.iva==="petro"&&g.impPet){const np=r2(r2(g.total)-r2(g.impPet));base=r2(np/1.12);iva=r2(np/1.12*0.12);}
-  else if(g.total){base=r2(r2(g.total)/1.12);iva=r2(r2(g.total)/1.12*0.12);}
-  const netoProv=g.tipo==="FESP"?r2(base-isrFE):0;
-  const c={...g,base,iva,isrFE,netoProv,total:r2(base+iva),estado:"ACTIVA"};
-  const p=base>0?genPartidaGasto(c,num):null;
+// ── ISR DASHBOARD ──────────────────────────────────────────────
+function ISRDashboard({partidas,ef}){
+  // Calcular ISR por trimestre
+  const trimestres = useMemo(()=>{
+    const trim={Q1:{meses:["2026-01","2026-02","2026-03"]},
+               Q2:{meses:["2026-04","2026-05","2026-06"]},
+               Q3:{meses:["2026-07","2026-08","2026-09"]},
+               Q4:{meses:["2026-10","2026-11","2026-12"]}};
+    return Object.entries(trim).map(([k,{meses}])=>{
+      const pvs=partidas.filter(p=>meses.includes((p.fecha||"").slice(0,7)));
+      const ventas=r2(pvs.flatMap(p=>p.lineas).filter(l=>l.cta==="4.1.01").reduce((a,l)=>a-l.haber,0));
+      const cv=r2(pvs.flatMap(p=>p.lineas).filter(l=>l.cta==="5.1.01").reduce((a,l)=>a+l.debe,0));
+      const gastos=r2(pvs.flatMap(p=>p.lineas).filter(l=>l.cta.startsWith("6.")&&l.cta!=="6.4.01").reduce((a,l)=>a+l.debe,0));
+      const isr_pag=r2(pvs.flatMap(p=>p.lineas).filter(l=>l.cta==="6.4.01").reduce((a,l)=>a+l.debe,0));
+      const uo=r2(ventas-cv-gastos);
+      const isr_dev=r2(Math.max(uo,0)*0.25);
+      const pendiente=r2(isr_dev-isr_pag);
+      return{k,ventas,cv,uo,isr_dev,isr_pag,pendiente,meses};
+    }).filter(t=>t.ventas>0||t.isr_pag>0);
+  },[partidas]);
+
   return(
     <div className="space-y-3">
-      <div className="grid grid-cols-2 gap-3">
-        <Inp label="Fecha" type="date" value={g.fecha} onChange={d=>setG(p=>({...p,fecha:d}))}/>
-        <Inp label="Serie DTE" value={g.serie} placeholder="EE0ABA9D"
-          onChange={s=>setG(p=>({...p,serie:s.toUpperCase().slice(0,8)}))}/>
+      <div className="bg-amber-50 border border-amber-200 rounded-xl p-3">
+        <p className="text-xs font-bold text-amber-800 mb-1">💡 Régimen ISR: Sobre Utilidades 25% trimestral</p>
+        <p className="text-xs text-amber-600">ISR devengado = 25% × Utilidad Operativa del trimestre. Pagar los primeros 10 días del mes siguiente.</p>
       </div>
-      <Inp label="Proveedor (opcional — deje vacío para ajuste)" value={g.proveedor}
-        placeholder="Nombre del proveedor o descripción"
-        onChange={v=>setG(p=>({...p,proveedor:v}))}/>
-      <Sel label="Categoría de gasto" value={g.cta} onChange={v=>setG(p=>({...p,cta:v}))}
-        options={GASTOS_CAT.map(c=>({value:c.cta,label:`${c.cta} — ${c.nom}`}))}/>
-      <div className="flex gap-2">
-        {["FACT","FPEQ","FESP","FCAM"].map(t=>(
-          <button key={t} onClick={()=>setG(p=>({...p,tipo:t}))}
-            className={`flex-1 py-1.5 rounded-lg text-xs font-bold border ${g.tipo===t?"bg-orange-600 text-white border-orange-600":"bg-white text-gray-600 border-gray-300"}`}>{t}</button>
-        ))}
-      </div>
-      <Inp label="Total factura c/IVA (Q)" type="number" step="0.01" value={g.total}
-        onChange={v=>setG(p=>({...p,total:v}))}/>
-      {cat.iva==="petro"&&<Inp label="⛽ Impuesto al petróleo (col W FEL)" type="number" step="0.01"
-        value={g.impPet} placeholder="Ver col W en FEL Compras" onChange={v=>setG(p=>({...p,impPet:v}))}/>}
-      {g.total>0&&<div className={`rounded-lg p-3 text-sm ${cat.iva==="fpeq"?"bg-yellow-50":g.tipo==="FESP"?"bg-red-50":"bg-green-50"}`}>
-        <div className={`grid gap-2 text-center ${g.tipo==="FESP"?"grid-cols-4":"grid-cols-3"}`}>
-          <div><div className="text-xs text-gray-500">Base</div><b>{q(base)}</b></div>
-          <div><div className="text-xs text-gray-500">IVA CF 12%</div>
-            <b className={cat.iva==="fpeq"?"text-yellow-600":g.tipo==="FESP"?"text-blue-600":"text-green-600"}>
-              {cat.iva==="fpeq"?"Sin IVA":q(iva)}</b></div>
-          {g.tipo==="FESP"&&<div><div className="text-xs text-gray-500">ISR 5%</div>
-            <b className="text-red-600">{q(isrFE)}</b></div>}
-          <div><div className="text-xs text-gray-500">Total pagar SAT</div>
-            <b>{g.tipo==="FESP"?q(r2(iva+isrFE)):q(r2(base+iva))}</b></div>
-        </div>
-        {g.tipo==="FESP"&&<div className="mt-2 text-xs space-y-0.5 text-center">
-          <p className="text-blue-700">🏦 Neto al proveedor: <b>{q(r2(base-isrFE))}</b></p>
-          <p className="text-orange-600">SAT-2085 IVA: <b>{q(iva)}</b> · Ret.Web ISR: <b>{q(isrFE)}</b></p>
-        </div>}
-      </div>}
-      <Sel label="Forma de pago" value={g.pagoCta} onChange={v=>setG(p=>({...p,pagoCta:v}))}
-        options={BANCOS_PAGO.map(b=>({value:b.cta,label:b.nom}))}/>
-      {p&&<PreviewPartida p={p} colorHdr="bg-orange-800"/>}
-      <Btn full color="orange" disabled={!g.total}
-        onClick={()=>{if(g.total){
-          const provFinal=g.proveedor.trim()||"Ajuste contable";
-          onSave({...c,proveedor:provFinal,id:`c-${Date.now()}`,serie:g.serie});
-          setG({fecha:g.fecha,proveedor:"",cta:g.cta,total:"",impPet:"",pagoCta:g.pagoCta,tipo:"FACT",serie:""});}}}>
-        ✔ Registrar Gasto — P{num}
-      </Btn>
-    </div>
-  );
-}
-
-// ── IMPORTAR FEL ──────────────────────────────────────────────
-function ImportarFEL({onVentas,onCompras}){
-  const[msg,setMsg]=useState(""),[loading,setLoading]=useState(false);
-  const handle=async(e)=>{
-    const file=e.target.files[0];if(!file)return;
-    setLoading(true);setMsg("");
-    try{
-      const buf=await file.arrayBuffer();
-      const wb=XLSX.read(buf,{type:"array"});
-      const hojas=wb.SheetNames;
-      let vn=0,cn=0;
-
-      // Detección flexible: busca por nombre O por posición si solo hay 1-2 hojas
-      hojas.forEach(name=>{
-        const n=name.toLowerCase().trim();
-        const esVenta = n.includes("venta") || n.includes("sale") || n.includes("fel_v")
-          || n.includes("emitida") || n==="hoja1" || n==="sheet1";
-        const esCompra = n.includes("compra") || n.includes("purchase") || n.includes("fel_c")
-          || n.includes("gasto") || n.includes("recibida");
-
-        if(esVenta){
-          const r=parseFELVentas(wb.Sheets[name]).filter(x=>x.estado!=="ANULADO");
-          if(r.length>0){onVentas(r);vn+=r.length;}
-        }
-        if(esCompra){
-          const r=parseFELCompras(wb.Sheets[name]).filter(x=>x.estado!=="ANULADO");
-          if(r.length>0){onCompras(r);cn+=r.length;}
-        }
-      });
-
-      // Si aún no encontró nada, intentar con TODAS las hojas
-      if(vn===0&&cn===0){
-        // Diagnóstico extra: mostrar primeras filas de cada hoja
-        let diag="";
-        hojas.forEach(name=>{
-          const data2=XLSX.utils.sheet_to_json(wb.Sheets[name],{header:1,defval:null}).slice(0,3);
-          const fila1=data2[0]?data2[0].filter(Boolean).slice(0,4).join("|"):"vacía";
-          diag+=`"${name}": ${fila1} · `;
-        });
-        setMsg(`⚠️ 0 registros. Estructura detectada: ${diag.slice(0,-3)}`);
-      } else {
-        setMsg(`✅ Importado: ${vn} ventas · ${cn} compras`);
-      }
-    }catch(err){setMsg("❌ Error: "+err.message);}
-    setLoading(false);e.target.value="";
-  };
-  return(
-    <div className="space-y-4">
-      <div className="bg-blue-50 border border-blue-200 rounded-xl p-3 text-xs text-blue-700 space-y-1">
-        <p className="font-bold text-sm mb-1">📥 Importar Excel SAT</p>
-        {[["Combustible","descuenta imp. petróleo col W"],["FPEQ","sin IVA — detectado automáticamente"],
-          ["VISA","extrae neto, comisión, retención, membresía"],
-          ["Vivian/Arrendamiento","se clasifica en 6.2.05 automáticamente"]].map(([t,d])=>(
-          <div key={t} className="flex gap-1.5"><span className="text-green-600">✓</span><span><b>{t}:</b> {d}</span></div>
-        ))}
-      </div>
-      <label className="block cursor-pointer">
-        <div className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center hover:border-blue-400 hover:bg-blue-50 transition-all">
-          <p className="text-4xl mb-2">📂</p>
-          <p className="font-bold text-gray-700">Seleccionar archivo FEL</p>
-          <p className="text-xs text-gray-400 mt-1">.xlsx exportado del portal SAT</p>
-        </div>
-        <input type="file" accept=".xlsx,.xls" onChange={handle} className="hidden"/>
-      </label>
-      {loading&&<p className="text-center text-blue-600 py-2">⏳ Procesando...</p>}
-      {msg&&<div className={`rounded-lg px-4 py-3 text-sm font-semibold text-center ${
-        msg.startsWith("✅")?"bg-green-100 text-green-800":"bg-red-100 text-red-800"}`}>{msg}</div>}
-    </div>
-  );
-}
-
-// ── PARTIDAS SEMANALES ────────────────────────────────────────
-// ── CONCILIACIÓN BANCARIA ─────────────────────────────────────
-function ConciliacionBanco({ventas}){
-  const[semFiltro,setSemFiltro]=useState("todas");
-  const[cuentaFiltro,setCuentaFiltro]=useState("todas");
-
-  const CUENTAS_BANCO={
-    "1.1.17.004":{nom:"Banco Industrial Q",color:"blue"},
-    "1.1.17.005":{nom:"Banrural Q",color:"teal"},
-    "1.1.03":{nom:"CxC Pendiente",color:"orange"},
-  };
-
-  // Extraer todos los cobros bancarios con detalle
-  const movimientos=ventas.flatMap(v=>{
-    const dia=parseInt((String(v.fecha||"").match(/-(\d{2})(?:T|$)/)||[])[1]||0);
-    const sem=SEM_RANGES.find(s=>dia>=s.d1&&dia<=s.d2)?.label||"Sin semana";
-    return (v.cobros||[]).filter(c=>c.tipo==="banco"||c.tipo==="visa").map(c=>({
-      id:c.id, fecha:v.fecha, serie:v.serie, cliente:v.cliente,
-      sem, cta:c.tipo==="visa"?"1.1.17.004":c.cta,
-      tipo:c.tipo, doc:c.doc||"",
-      monto:c.tipo==="visa"
-        ?r2(Number(c.visaNet||0)+Number(c.visaRet||0)+Number(c.visaCom||0)+Number(c.visaMem||0))
-        :r2(Number(c.monto||0)),
-      visaNet:c.visaNet, visaRet:c.visaRet, visaCom:c.visaCom, visaMem:c.visaMem,
-    }));
-  });
-
-  const filtrados=movimientos.filter(m=>
-    (semFiltro==="todas"||m.sem===semFiltro)&&
-    (cuentaFiltro==="todas"||m.cta===cuentaFiltro)
-  );
-
-  // Totales por cuenta
-  const totPorCta={};
-  movimientos.forEach(m=>{totPorCta[m.cta]=(totPorCta[m.cta]||0)+m.monto;});
-
-  // Totales por semana
-  const totPorSem={};
-  movimientos.forEach(m=>{
-    if(!totPorSem[m.sem]) totPorSem[m.sem]={};
-    totPorSem[m.sem][m.cta]=(totPorSem[m.sem][m.cta]||0)+m.monto;
-  });
-
-  const totalGral=r2(Object.values(totPorCta).reduce((a,v)=>a+v,0));
-
-  return(
-    <div className="space-y-4">
-      <Btn full color="green" onClick={()=>xlsxBanco(ventas)}>
-        ⬇ Exportar Conciliación Bancaria Excel
-      </Btn>
-      {/* Resumen por cuenta */}
-      <div className="grid grid-cols-1 gap-2">
-        {Object.entries(CUENTAS_BANCO).map(([cta,info])=>{
-          const tot=r2(totPorCta[cta]||0);
-          if(!tot) return null;
-          const colores={blue:"bg-blue-50 border-blue-300 text-blue-800",
-            teal:"bg-teal-50 border-teal-300 text-teal-800",
-            orange:"bg-orange-50 border-orange-300 text-orange-800"}[info.color];
-          return(
-            <div key={cta} className={`border rounded-xl p-3 flex justify-between items-center ${colores}`}>
-              <div>
-                <p className="font-bold text-sm">{info.nom}</p>
-                <p className="text-xs opacity-70">{movimientos.filter(m=>m.cta===cta).length} depósitos</p>
-              </div>
-              <p className="font-bold text-lg">{q(tot)}</p>
+      {trimestres.map(t=>(
+        <div key={t.k} className={`border rounded-xl overflow-hidden ${t.pendiente>0.01?"border-red-300":"border-green-300"}`}>
+          <div className={`px-3 py-2 flex justify-between items-center ${t.pendiente>0.01?"bg-red-50":"bg-green-50"}`}>
+            <span className="font-bold text-sm">{t.k} — {t.meses[0].slice(5)} a {t.meses[2].slice(5)}</span>
+            <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${t.pendiente>0.01?"bg-red-600 text-white":"bg-green-600 text-white"}`}>
+              {t.pendiente>0.01?`⚠️ Pendiente Q${q(t.pendiente)}`:"✅ Pagado"}
+            </span>
+          </div>
+          <div className="p-3 grid grid-cols-2 gap-2 text-xs">
+            <div className="bg-white rounded p-2">
+              <div className="text-gray-400">Ventas</div>
+              <div className="font-bold">{q(t.ventas)}</div>
             </div>
-          );
-        })}
-        <div className="bg-gray-800 text-white rounded-xl p-3 flex justify-between items-center">
-          <span className="font-bold">TOTAL COBROS</span>
-          <span className="font-bold text-lg">{q(totalGral)}</span>
+            <div className="bg-white rounded p-2">
+              <div className="text-gray-400">Util. Operativa</div>
+              <div className={`font-bold ${t.uo>=0?"text-green-700":"text-red-700"}`}>{q(t.uo)}</div>
+            </div>
+            <div className="bg-blue-50 rounded p-2">
+              <div className="text-gray-400">ISR devengado (25%)</div>
+              <div className="font-bold text-blue-700">{q(t.isr_dev)}</div>
+            </div>
+            <div className="bg-white rounded p-2">
+              <div className="text-gray-400">ISR pagado (libros)</div>
+              <div className="font-bold text-green-700">{q(t.isr_pag)}</div>
+            </div>
+          </div>
+          {t.pendiente>0.01&&(
+            <div className="bg-red-50 px-3 py-2 text-xs text-red-700 font-semibold">
+              ⚠️ Pendiente de pagar: Q{q(t.pendiente)} — Registrar partida: DEBE 6.4.01 / HABER Banco
+            </div>
+          )}
         </div>
-      </div>
+      ))}
+    </div>
+  );
+}
 
-      {/* Resumen semanal */}
-      <div className="bg-white border rounded-xl overflow-hidden">
-        <div className="bg-gray-700 text-white px-3 py-2 text-xs font-bold">
-          Depósitos por semana
-        </div>
-        <div className="divide-y text-xs">
-          {SEM_RANGES.map(s=>{
-            const tBI=r2(totPorSem[s.label]?.["1.1.17.004"]||0);
-            const tBR=r2(totPorSem[s.label]?.["1.1.17.005"]||0);
-            const tTotal=r2(tBI+tBR);
-            if(!tTotal) return null;
-            return(
-              <div key={s.label} className="px-3 py-2">
-                <div className="flex justify-between font-semibold mb-1">
-                  <span>{s.label}</span><span>{q(tTotal)}</span>
-                </div>
-                <div className="flex gap-3 text-gray-500">
-                  {tBI>0&&<span>🏦 BI {q(tBI)}</span>}
-                  {tBR>0&&<span>🏦 BR {q(tBR)}</span>}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
+// ── CONCILIACIÓN AUTOMÁTICA DIARIO vs MAYOR ────────────────────
+function ConciliacionView({partidas}){
+  const [filtro,setFiltro]=useState("");
+  const conciliacion=useMemo(()=>{
+    // Calcular saldo por cuenta desde partidas (Diario)
+    const acc={};
+    partidas.forEach(p=>p.lineas.forEach(l=>{
+      if(!acc[l.cta]) acc[l.cta]={cta:l.cta,d:0,h:0,movs:0};
+      acc[l.cta].d=r2(acc[l.cta].d+l.debe);
+      acc[l.cta].h=r2(acc[l.cta].h+l.haber);
+      acc[l.cta].movs++;
+    }));
+    return Object.values(acc).sort((a,b)=>a.cta.localeCompare(b.cta)).map(c=>({
+      ...c,
+      saldo:r2(c.d-c.h),
+      nom:CUENTAS[c.cta]||c.cta,
+      ok:true // El Mayor auto-generado SIEMPRE cuadra con el Diario
+    }));
+  },[partidas]);
 
-      {/* Filtros */}
-      <div className="grid grid-cols-2 gap-2">
-        <Sel label="Semana" value={semFiltro} onChange={setSemFiltro}
-          options={[{value:"todas",label:"Todas las semanas"},
-            ...SEM_RANGES.map(s=>({value:s.label,label:s.label}))]}/>
-        <Sel label="Banco" value={cuentaFiltro} onChange={setCuentaFiltro}
-          options={[{value:"todas",label:"Todos los bancos"},
-            {value:"1.1.17.004",label:"Banco Industrial"},
-            {value:"1.1.17.005",label:"Banrural"}]}/>
-      </div>
+  const filtradas=filtro?conciliacion.filter(c=>c.cta.includes(filtro)||c.nom.toLowerCase().includes(filtro.toLowerCase())):conciliacion;
+  const totD=r2(filtradas.reduce((a,c)=>a+c.d,0));
+  const totH=r2(filtradas.reduce((a,c)=>a+c.h,0));
 
-      {/* Detalle boletas */}
+  return(
+    <div className="space-y-3">
+      <div className="bg-green-50 border border-green-200 rounded-xl p-3 text-xs text-green-800">
+        ✅ <b>El Libro Mayor se genera automáticamente del Diario</b> — siempre cuadran por definición. Esta vista muestra el resumen de saldos por cuenta.
+      </div>
+      <input placeholder="Buscar cuenta..." value={filtro} onChange={e=>setFiltro(e.target.value)}
+        className="w-full border rounded-xl px-3 py-2 text-sm"/>
       <div className="border rounded-xl overflow-hidden">
-        <div className="bg-blue-900 text-white px-3 py-2 flex justify-between text-xs font-bold">
-          <span>Detalle de depósitos ({filtrados.length})</span>
-          <span>{q(r2(filtrados.reduce((a,m)=>a+m.monto,0)))}</span>
+        <div className="bg-gray-800 text-white px-3 py-2 grid grid-cols-6 text-xs font-bold">
+          <span className="col-span-2">Cuenta</span>
+          <span className="text-right">Debe</span>
+          <span className="text-right">Haber</span>
+          <span className="text-right">Saldo</span>
+          <span className="text-right">Movs</span>
         </div>
-        <div className="divide-y text-xs max-h-96 overflow-y-auto">
-          {filtrados.length===0&&<p className="text-center text-gray-400 py-4">Sin movimientos</p>}
-          {filtrados.map((m,i)=>(
-            <div key={i} className={`px-3 py-2 ${i%2?"bg-white":"bg-gray-50"}`}>
-              <div className="flex justify-between items-start">
-                <div className="flex-1 min-w-0">
-                  <div className="flex gap-2 items-center">
-                    <span className="font-mono text-blue-700 shrink-0">{m.serie||"—"}</span>
-                    <span className="text-gray-500 truncate">{m.cliente}</span>
-                  </div>
-                  <div className="flex gap-2 mt-0.5 text-gray-400">
-                    <span>{m.fecha?.slice(5)}</span>
-                    <span>{m.sem}</span>
-                    {m.doc&&<span className="text-blue-600">Doc:{m.doc}</span>}
-                    {m.tipo==="visa"&&(
-                      <span className="text-purple-600">
-                        VISA neto {q(r2(Number(m.visaNet||0)))}
-                        {m.visaRet>0&&` ret ${q(r2(Number(m.visaRet||0)))}`}
-                      </span>
-                    )}
-                  </div>
-                </div>
-                <div className="text-right shrink-0 ml-2">
-                  <p className="font-bold">{q(m.monto)}</p>
-                  <p className="text-gray-400">
-                    {m.cta==="1.1.17.004"?"BI":m.cta==="1.1.17.005"?"BR":"CxC"}
-                  </p>
-                </div>
+        <div className="max-h-96 overflow-y-auto divide-y text-xs">
+          {filtradas.map((c,i)=>(
+            <div key={i} className={`grid grid-cols-6 px-3 py-1.5 ${i%2?"bg-white":"bg-gray-50"}`}>
+              <div className="col-span-2">
+                <div className="font-semibold text-blue-700">{c.cta}</div>
+                <div className="text-gray-500 text-xs truncate">{c.nom}</div>
               </div>
+              <span className="text-right self-center">{q(c.d)}</span>
+              <span className="text-right self-center">{q(c.h)}</span>
+              <span className={`text-right self-center font-bold ${c.saldo>=0?"text-gray-800":"text-red-600"}`}>
+                {c.saldo>=0?q(c.saldo):`(${q(Math.abs(c.saldo))})`}
+              </span>
+              <span className="text-right self-center text-gray-400">{c.movs}</span>
             </div>
           ))}
         </div>
+        <div className="grid grid-cols-6 px-3 py-2 bg-blue-900 text-white text-xs font-bold">
+          <span className="col-span-2">TOTALES</span>
+          <span className="text-right">{q(totD)}</span>
+          <span className="text-right">{q(totH)}</span>
+          <span className="text-right">{q(r2(totD-totH))}</span>
+          <span className="text-right">{filtradas.reduce((a,c)=>a+c.movs,0)}</span>
+        </div>
       </div>
-    </div>
-  );
-}
-
-function PartidasSemanales({ventas,compras,nextNum,onRegistrar,onRegistrarGastos,onEliminar,onEliminarGasto}){
-  const[abierto,setAbierto]=useState(null);
-  const[abiertoG,setAbiertoG]=useState(null);
-  // Estado para edición de cuentas contables en gastos
-  const[editCta,setEditCta]=useState({}); // {gastoId: nuevaCta}
-  const getCta=(g)=>editCta[g.id]||g.cta;
-  const setCta=(id,cta)=>setEditCta(prev=>({...prev,[id]:cta}));
-  // Gastos con cuentas editadas aplicadas
-  const aplicarEdiciones=(gs)=>gs.map(g=>({...g,cta:getCta(g)}));
-  // Cobros semanales: el usuario ingresa los totales reales del banco
-  const[cobrosSemanales,setCobrosSemanales]=useState({
-    0:{bi:"",br:"",visaNet:"",visaRet:"",visaCom:"",visaMem:"",dep:""},
-    1:{bi:"",br:"",visaNet:"",visaRet:"",visaCom:"",visaMem:"",dep:""},
-    2:{bi:"",br:"",visaNet:"",visaRet:"",visaCom:"",visaMem:"",dep:""},
-    3:{bi:"",br:"",visaNet:"",visaRet:"",visaCom:"",visaMem:"",dep:""},
-  });
-  const upd=(i,campo,val)=>setCobrosSemanales(prev=>({...prev,[i]:{...prev[i],[campo]:val}}));
-  const dia=f=>{const m=String(f||"").match(/-(\d{2})$/);return m?parseInt(m[1]):0;};
-
-  const buildCobros=(cs)=>{
-    const L=[];
-    const bi=r2(Number(cs.bi||0)),br=r2(Number(cs.br||0));
-    const vn=r2(Number(cs.visaNet||0)),vr=r2(Number(cs.visaRet||0));
-    const vc=r2(Number(cs.visaCom||0)),vm=r2(Number(cs.visaMem||0));
-    const dep=r2(Number(cs.dep||0));
-    if(bi>0)  L.push({id:"bi",tipo:"banco",cta:"1.1.17.004",monto:bi});
-    if(br>0)  L.push({id:"br",tipo:"banco",cta:"1.1.17.005",monto:br});
-    if(vn>0)  L.push({id:"vn",tipo:"visa",cta:"VISA",visaNet:vn,visaRet:vr,visaCom:vc,visaMem:vm});
-    if(dep>0) L.push({id:"dep",tipo:"deposito",cta:"2.1.05",monto:dep});
-    if(dep<0) L.push({id:"dep",tipo:"deposito",cta:"2.1.05",monto:dep});
-    return L;
-  };
-
-  return(
-    <div className="space-y-3">
-      <div className="bg-green-50 border border-green-200 rounded-xl p-3 text-xs text-green-700">
-        <b>💡 Ingrese los cobros REALES del banco por semana</b> — use los totales del estado de cuenta, no calcule por factura. Así evita diferencias de redondeo.
-      </div>
-      {SEM_RANGES.map((s,i)=>{
-        const vtas=ventas.filter(v=>{const d=dia(v.fecha);return d>=s.d1&&d<=s.d2;});
-        const tB=r2(vtas.reduce((a,v)=>a+v.base,0));
-        const tT=r2(vtas.reduce((a,v)=>a+v.base+v.iva,0));
-        const cs=cobrosSemanales[i];
-        // Auto-calcular cobros desde facturas si el usuario no ingresó valores
-        const autoBI=r2(vtas.flatMap(v=>v.cobros||[]).filter(c=>c.tipo==="banco"&&c.cta==="1.1.17.004").reduce((s,c)=>s+Number(c.monto||0),0));
-        const autoBR=r2(vtas.flatMap(v=>v.cobros||[]).filter(c=>c.tipo==="banco"&&c.cta==="1.1.17.005").reduce((s,c)=>s+Number(c.monto||0),0));
-        const autoCxC=r2(vtas.flatMap(v=>v.cobros||[]).filter(c=>c.tipo==="banco"&&c.cta==="1.1.03").reduce((s,c)=>s+Number(c.monto||0),0));
-        const autoVN=r2(vtas.flatMap(v=>v.cobros||[]).filter(c=>c.tipo==="visa").reduce((s,c)=>s+Number(c.visaNet||0),0));
-        const autoVR=r2(vtas.flatMap(v=>v.cobros||[]).filter(c=>c.tipo==="visa").reduce((s,c)=>s+Number(c.visaRet||0),0));
-        const autoVC=r2(vtas.flatMap(v=>v.cobros||[]).filter(c=>c.tipo==="visa").reduce((s,c)=>s+Number(c.visaCom||0),0));
-        const autoVM=r2(vtas.flatMap(v=>v.cobros||[]).filter(c=>c.tipo==="visa").reduce((s,c)=>s+Number(c.visaMem||0),0));
-        // Usar valor manual si existe, sino usar auto-calculado
-        const biVal=cs.bi!==""?Number(cs.bi||0):autoBI;
-        const brVal=cs.br!==""?Number(cs.br||0):autoBR;
-        const vnVal=cs.visaNet!==""?Number(cs.visaNet||0):autoVN;
-        const vrVal=cs.visaRet!==""?Number(cs.visaRet||0):autoVR;
-        const vcVal=cs.visaCom!==""?Number(cs.visaCom||0):autoVC;
-        const vmVal=cs.visaMem!==""?Number(cs.visaMem||0):autoVM;
-        const depVal=Number(cs.dep||0);
-        const totalCobros=r2(biVal+brVal+vnVal+vrVal+vcVal+vmVal+depVal+autoCxC);
-        const diff=r2(tT-totalCobros);
-        const cuadra=Math.abs(diff)<0.10;
-        // Generar cobros con valores reales
-        const allCobros2=[];
-        if(biVal>0) allCobros2.push({id:"bi",tipo:"banco",cta:"1.1.17.004",monto:biVal});
-        if(brVal>0) allCobros2.push({id:"br",tipo:"banco",cta:"1.1.17.005",monto:brVal});
-        if(autoCxC>0) allCobros2.push({id:"cxc",tipo:"banco",cta:"1.1.03",monto:autoCxC});
-        if(vnVal>0) allCobros2.push({id:"vn",tipo:"visa",cta:"VISA",visaNet:vnVal,visaRet:vrVal,visaCom:vcVal,visaMem:vmVal});
-        if(depVal>0) allCobros2.push({id:"dep",tipo:"deposito",cta:"2.1.05",monto:depVal});
-        const allC=allCobros2;
-        const cobros=allCobros2;
-        const L=cobrosToLineas(allC,`${s.label} (${vtas.length} facturas)`,"");
-        L.push({cta:"4.1.01",debe:0,haber:tB,conc:`Ventas ${s.label} - ${vtas.length} facturas`});
-        L.push({cta:"2.1.03",debe:0,haber:r2(vtas.reduce((a,v)=>a+v.iva,0)),conc:`IVA DT 12% - ${s.label}`});
-        const p=vtas.length>0?{num:nextNum+i,fecha:vtas[0].fecha,tipo:"VENTA_SEM",
-          concepto:`Ventas ${s.label}`,lineas:L}:null;
-        return(
-          <div key={s.label} className="border rounded-xl overflow-hidden shadow-sm">
-            <div className="bg-blue-900 text-white px-4 py-2 flex justify-between items-center">
-              <div><span className="font-bold">{s.label}</span><span className="text-blue-300 text-xs ml-2">días {s.d1}–{s.d2}</span></div>
-              <span className="text-xs bg-blue-700 px-2 py-0.5 rounded-full">{vtas.length} facturas</span>
-            </div>
-            {vtas.length===0?<p className="text-xs text-gray-400 text-center py-3">Sin ventas registradas</p>:(
-              <div className="p-3 space-y-3">
-                {/* Totales de facturas */}
-                <div className="grid grid-cols-2 gap-2 text-sm bg-gray-50 rounded-lg p-2 text-center">
-                  <div><div className="text-xs text-gray-500">Total facturas c/IVA</div><b className="text-blue-700">{q(tT)}</b></div>
-                  <div><div className="text-xs text-gray-500">Base s/IVA</div><b className="text-green-700">{q(tB)}</b></div>
-                </div>
-                {/* Cobros reales del banco — ingreso manual */}
-                <div className="bg-white border border-gray-200 rounded-xl p-3 space-y-2">
-                  <p className="text-xs font-bold text-gray-600 uppercase tracking-wide">Cobros reales del banco</p>
-                  <div className="grid grid-cols-2 gap-2">
-                    <Inp label="BI Q (depósito total)" type="number" step="0.01"
-                      value={cs.bi} onChange={v=>upd(i,"bi",v)} placeholder="Q0.00"/>
-                    <Inp label="Banrural Q (depósito total)" type="number" step="0.01"
-                      value={cs.br} onChange={v=>upd(i,"br",v)} placeholder="Q0.00"/>
-                  </div>
-                  {/* VISA si aplica */}
-                  <div className="grid grid-cols-2 gap-2">
-                    <Inp label="VISA neto depositado" type="number" step="0.01"
-                      value={cs.visaNet} onChange={v=>upd(i,"visaNet",v)} placeholder="Q0.00"/>
-                    <Inp label="IVA retenido VISA" type="number" step="0.01"
-                      value={cs.visaRet} onChange={v=>upd(i,"visaRet",v)} placeholder="Q0.00"/>
-                  </div>
-                  <div className="grid grid-cols-2 gap-2">
-                    <Inp label="Comisión VISA bruta" type="number" step="0.01"
-                      value={cs.visaCom} onChange={v=>upd(i,"visaCom",v)} placeholder="Q0.00"/>
-                    <Inp label="Membresía VISA" type="number" step="0.01"
-                      value={cs.visaMem} onChange={v=>upd(i,"visaMem",v)} placeholder="Q0.00"/>
-                  </div>
-                  <Inp label="Dep. x identificar (+aplicar / −exceso)" type="number" step="0.01"
-                    value={cs.dep} onChange={v=>upd(i,"dep",v)} placeholder="Q0.00"/>
-                  {/* Verificación cuadre */}
-                  <div className={`rounded-lg px-3 py-2 text-xs flex justify-between font-semibold ${
-                    cuadra?"bg-green-50 border border-green-300 text-green-700":"bg-red-50 border border-red-300 text-red-600"}`}>
-                    <div>
-                      <span>Facturas {q(tT)} · Cobros {q(totalCobros)}</span>
-                      {autoCxC>0&&<span className="text-orange-600 ml-2">CxC {q(autoCxC)}</span>}
-                    </div>
-                    <span>{cuadra?"✅ Cuadra":`⚠️ Dif Q${Math.abs(diff).toFixed(2)}`}</span>
-                  </div>
-                </div>
-                <div className="flex gap-2">
-                  <button onClick={()=>setAbierto(abierto===i?null:i)}
-                    className="flex-1 text-xs border border-blue-300 text-blue-700 py-1.5 rounded-lg hover:bg-blue-50">
-                    {abierto===i?"Ocultar partida":"Ver partida"}
-                  </button>
-                  <button onClick={()=>p&&onRegistrar(p)}
-                    className="flex-1 text-xs bg-green-700 text-white py-1.5 rounded-lg hover:bg-green-800 font-semibold">
-                    Registrar P{nextNum+i}
-                  </button>
-                </div>
-                {abierto===i&&p&&<PreviewPartida p={p}/>}
-                {/* Lista facturas con botón eliminar */}
-                <div className="text-xs text-gray-500 max-h-32 overflow-y-auto space-y-0.5 border-t pt-2">
-                  {vtas.map((v,j)=>(
-                    <div key={j} className="flex justify-between items-center gap-1 hover:bg-red-50 rounded px-1">
-                      <span className="truncate flex-1">{v.serie||"—"} {v.cliente}</span>
-                      <span className="font-semibold shrink-0">{q(r2(v.base+v.iva))}</span>
-                      <button onClick={()=>onEliminar&&onEliminar(v.id)}
-                        className="text-red-400 hover:text-red-600 font-bold ml-1 shrink-0 w-4 text-center"
-                        title="Eliminar factura">✕</button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-        );
-      })}
-
-      {/* ── SECCIÓN GASTOS ─────────────────────────── */}
-      {compras&&compras.length>0&&(()=>{
-        const pendientes=compras.filter(c=>!c.registrado&&c.estado!=="ANULADO");
-        if(!pendientes.length) return null;
-        return(
-          <div className="border-2 border-orange-300 rounded-xl overflow-hidden mt-2">
-            <div className="bg-orange-700 text-white px-4 py-2.5 flex justify-between items-center">
-              <div>
-                <span className="font-bold">🧾 Gastos / Compras pendientes</span>
-                <span className="text-orange-200 text-xs ml-2">{pendientes.length} facturas importadas</span>
-              </div>
-              <button onClick={()=>setAbiertoG(!abiertoG)}
-                className="text-xs bg-orange-600 px-3 py-1 rounded-full hover:bg-orange-500">
-                {abiertoG?"Ocultar":"Ver detalle"}
-              </button>
-            </div>
-            <div className="p-3 space-y-2">
-              {/* Botón registrar TODOS de una vez */}
-              <div className="bg-white border-2 border-orange-400 rounded-xl p-3 text-center">
-                <p className="text-xs text-orange-700 font-bold mb-2">
-                  Registrar todos los gastos del mes en una sola partida
-                </p>
-                <button onClick={()=>onRegistrarGastos(pendientes,"Junio 2026")}
-                  className="w-full bg-orange-700 text-white text-sm font-bold py-3 rounded-lg hover:bg-orange-800">
-                  ✔ Registrar 1 partida con todos los {pendientes.length} gastos
-                </button>
-              </div>
-              <p className="text-xs text-center text-orange-400">— o por semana —</p>
-              {/* Resumen por semana */}
-              {SEM_RANGES.map((s,si)=>{
-                const dia2=f=>{const m=String(f||"").match(/-(\d{2})(?:T|$)/);return m?parseInt(m[1]):0;};
-                const gs=pendientes.filter(c=>{const d=dia2(c.fecha);return d>=s.d1&&d<=s.d2;});
-                if(!gs.length) return null;
-                const tG=r2(gs.reduce((a,c)=>a+c.base,0));
-                const tCF=r2(gs.reduce((a,c)=>a+c.iva,0));
-                return(
-                  <div key={si} className="bg-orange-50 rounded-lg p-3 border border-orange-200 space-y-2">
-                    {/* Encabezado semana */}
-                    <div className="flex justify-between items-center">
-                      <span className="text-xs font-bold text-orange-800">{s.label} — {gs.length} facturas</span>
-                      <span className="text-xs text-orange-600">días {s.d1}–{s.d2}</span>
-                    </div>
-                    {/* Totales */}
-                    <div className="grid grid-cols-3 gap-1 text-xs text-center bg-white rounded p-2">
-                      <div><div className="text-gray-400">Base gasto</div><b className="text-orange-700">{q(tG)}</b></div>
-                      <div><div className="text-gray-400">IVA CF</div><b className="text-green-700">{q(tCF)}</b></div>
-                      <div><div className="text-gray-400">Total pagado</div><b>{q(r2(tG+tCF))}</b></div>
-                    </div>
-                    {/* Detalle facturas con método de pago */}
-                    <div className="space-y-1 max-h-32 overflow-y-auto">
-                      {gs.map((c,ci)=>{
-                        const pagNom=CUENTAS[c.pagoCta]||c.pagoCta||"Caja";
-                        const pagColor=c.pagoCta==="1.1.17.004"?"text-blue-600":
-                          c.pagoCta==="1.1.17.005"?"text-teal-600":"text-gray-500";
-                        const ctaActual=getCta(c);
-                        const ctaEditada=editCta[c.id];
-                        return(
-                          <div key={ci} className={`text-xs bg-white rounded px-2 py-1.5 border ${ctaEditada?"border-blue-300 bg-blue-50":"border-orange-100"}`}>
-                            <div className="flex justify-between items-start">
-                              <div className="flex-1 min-w-0 mr-2">
-                                <div className="flex items-center justify-between">
-                                  <span className="text-gray-700 truncate block font-semibold">{c.proveedor?.slice(0,28)}</span>
-                                  <button onClick={()=>onEliminarGasto&&onEliminarGasto(c.id)}
-                                    className="text-red-400 hover:text-red-600 font-bold ml-1 shrink-0"
-                                    title="Excluir de esta semana">✕</button>
-                                </div>
-                                <div className="flex gap-2 mt-0.5 flex-wrap">
-                                  <span className={pagColor}>
-                                    {c.pagoCta==="1.1.17.004"?"🏦 BI":
-                                     c.pagoCta==="1.1.17.005"?"🏦 BR":
-                                     c.pagoCta==="2.1.01"?"📋 CxP":"💵 Caja"}
-                                  </span>
-                                  {c.tipo==="FESP"&&<span className="text-red-600 font-semibold">FESP+ISR</span>}
-                                  {c.tipo==="FPEQ"&&<span className="text-yellow-600 font-semibold">FPEQ</span>}
-                                </div>
-                              </div>
-                              <div className="text-right shrink-0">
-                                <div className="font-semibold">Q{Number(c.total||0).toFixed(2)}</div>
-                                {c.iva>0&&<div className="text-green-600">CF Q{Number(c.iva||0).toFixed(2)}</div>}
-                              </div>
-                            </div>
-                            {/* Selector de cuenta contable */}
-                            <div className="mt-1.5 flex items-center gap-1">
-                              <span className="text-gray-400 shrink-0">Cuenta:</span>
-                              <select value={ctaActual}
-                                onChange={e=>setCta(c.id,e.target.value)}
-                                className={`flex-1 text-xs border rounded px-1 py-0.5 ${ctaEditada?"border-blue-400 text-blue-700 bg-blue-50 font-semibold":"border-gray-200 text-gray-600"}`}>
-                                {GASTOS_CAT.map(g=>(
-                                  <option key={g.cta} value={g.cta}>{g.cta} — {g.nom}</option>
-                                ))}
-                              </select>
-                              {ctaEditada&&(
-                                <button onClick={()=>setCta(c.id,c.cta)}
-                                  className="text-gray-400 hover:text-red-500 shrink-0 px-1"
-                                  title="Restaurar original">↩</button>
-                              )}
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                    {/* Vista previa partida con cuentas editadas */}
-                    {(()=>{
-                      const pG=genPartidaGastosSem(aplicarEdiciones(gs),nextNum+100+si,s.label);
-                      return pG&&<PreviewPartida p={pG} colorHdr="bg-orange-800"/>;
-                    })()}
-                    {/* Botón registrar */}
-                    <button onClick={()=>onRegistrarGastos(aplicarEdiciones(gs), s.label)}
-                      className="w-full text-xs bg-orange-700 text-white py-2 rounded-lg hover:bg-orange-800 font-bold">
-                      ✔ Registrar P{nextNum+si} — Gastos {s.label} consolidado
-                    </button>
-                  </div>
-                );
-              })}
-              <p className="text-xs text-orange-500 text-center">
-                1 partida consolidada por semana — igual que las ventas
-              </p>
-            </div>
-          </div>
-        );
-      })()}
-    </div>
-  );
-}
-
-// ── LIBROS ────────────────────────────────────────────────────
-function LibroDiarioView({partidas}){
-  const[f,setF]=useState("");
-  const pf=partidas.filter(p=>!f||p.concepto.toLowerCase().includes(f.toLowerCase())||String(p.num).includes(f));
-  return(
-    <div className="space-y-3">
-      <div className="flex gap-2">
-        <Inp className="flex-1" value={f} onChange={setF} placeholder="Buscar..."/>
-        <Btn size="sm" color="green" onClick={()=>xlsxCompatible(partidas)}>⬇ Para pegar</Btn>
-      </div>
-      {pf.length===0&&<p className="text-center text-gray-400 py-8 text-sm">Sin partidas registradas</p>}
-      {pf.map(p=>{
-        const sd=r2(p.lineas.reduce((a,l)=>a+l.debe,0)),sh=r2(p.lineas.reduce((a,l)=>a+l.haber,0));
-        return(
-          <div key={p.num} className="border rounded-lg overflow-hidden shadow-sm">
-            <div className={`px-3 py-1.5 text-xs font-bold flex justify-between text-white ${
-              p.tipo.startsWith("VENTA")?"bg-green-800":p.tipo==="COMPRA"?"bg-orange-700":"bg-blue-900"}`}>
-              <span className="truncate">P{p.num} · {p.fecha} · {p.concepto.slice(0,40)}</span>
-              <span>{Math.abs(sd-sh)<0.02?"✅":"⚠️"}</span>
-            </div>
-            {p.lineas.map((l,i)=>(
-              <div key={i} className={`grid grid-cols-4 px-3 py-0.5 text-xs ${i%2?"bg-white":"bg-gray-50"}`}>
-                <span className="font-mono text-blue-700">{l.cta}</span>
-                <span className="text-gray-600 truncate">{CUENTAS[l.cta]||l.cta}</span>
-                <span className="text-right text-green-700">{l.debe?q(l.debe):""}</span>
-                <span className="text-right text-red-700">{l.haber?q(l.haber):""}</span>
-              </div>
-            ))}
-            <div className="grid grid-cols-4 px-3 py-1 bg-gray-100 font-bold text-xs border-t">
-              <span className="col-span-2">TOTALES P{p.num}</span>
-              <span className="text-right">{q(sd)}</span><span className="text-right">{q(sh)}</span>
-            </div>
-          </div>
-        );
-      })}
     </div>
   );
 }
@@ -1407,7 +809,8 @@ export default function App(){
   const[compras,setCompras]=useState([]);
   const[partidas,setPartidas]=useState([]);
   const[startNum,setStartNum]=useState(270);
-  const[modoVenta,setModoVenta]=useState("semanal"); // "semanal" | "individual"
+  const[modoVenta,setModoVenta]=useState("semanal");
+  const[provCat,setProvCat]=useState({}); // catálogo proveedor→cuenta aprendido // "semanal" | "individual"
   const[confirmarBorrar,setConfirmarBorrar]=useState(false);
   const[ready,setReady]=useState(false);
   const[storageOk,setStorageOk]=useState(false);
@@ -1535,10 +938,20 @@ export default function App(){
 
   const registrarSem=useCallback(p=>{
     if(!p)return;
+    // ── VALIDACIÓN ──────────────────────────────
+    const td=r2(p.lineas.reduce((a,l)=>a+l.debe,0));
+    const th=r2(p.lineas.reduce((a,l)=>a+l.haber,0));
+    if(Math.abs(td-th)>0.10){
+      alert(`⚠️ La partida NO cuadra: DEBE Q${td.toFixed(2)} ≠ HABER Q${th.toFixed(2)}. Diferencia: Q${(td-th).toFixed(2)}`);
+      return;
+    }
     const num=startNum+partidas.length;
+    const existe=partidas.find(x=>x.num===num);
+    if(existe){
+      if(!window.confirm(`⚠️ Ya existe la partida P${num}. ¿Continuar de todas formas?`)) return;
+    }
     setPartidas(prev=>{
       const nuevas=[...prev,{...p,num}];
-      // Auto-exportar al registrar partida semanal
       setTimeout(()=>xlsxCompatible(nuevas),500);
       return nuevas;
     });
@@ -1576,6 +989,8 @@ export default function App(){
     {id:"banco",icon:"🏦",label:"Banco"},
     {id:"diario",icon:"📖",label:"Diario"},
     {id:"mayor",icon:"📋",label:"Mayor"},
+    {id:"ef",icon:"📈",label:"E.F."},
+    {id:"conciliar",icon:"✅",label:"Conciliar"},
     {id:"config",icon:"⚙️",label:"Config"},
   ];
 
@@ -1624,6 +1039,40 @@ export default function App(){
                 </div>
               </div>
             </div>
+            {/* ISR Alert en Dashboard */}
+            {(()=>{
+              const ef=calcEF(partidas);
+              const isr_pen=r2(Math.max(ef.uo,0)*0.25-ef.isr_pag);
+              return isr_pen>100?(
+                <div className="bg-red-50 border border-red-300 rounded-xl p-3">
+                  <p className="text-xs font-bold text-red-800">⚠️ ISR Pendiente de pago</p>
+                  <p className="text-xs text-red-600 mt-0.5">
+                    ISR devengado Q{q(r2(Math.max(ef.uo,0)*0.25))} — Pagado Q{q(ef.isr_pag)} — <b>Pendiente Q{q(isr_pen)}</b>
+                  </p>
+                  <Btn size="sm" color="red" onClick={()=>setTab("ef")} className="mt-2">Ver detalle ISR</Btn>
+                </div>
+              ):null;
+            })()}
+
+            {/* Mini EF en Dashboard */}
+            {partidas.length>0&&(()=>{
+              const ef=calcEF(partidas);
+              return(
+                <div className="grid grid-cols-3 gap-2">
+                  {[
+                    {lbl:"Ventas",val:ef.ventas,color:"text-blue-700"},
+                    {lbl:"Util. Bruta",val:ef.ub,color:ef.ub>=0?"text-green-700":"text-red-700"},
+                    {lbl:"Util. Operativa",val:ef.uo,color:ef.uo>=0?"text-green-700":"text-red-700"},
+                  ].map(({lbl,val,color})=>(
+                    <div key={lbl} className="bg-white border rounded-xl p-2 text-center" onClick={()=>setTab("ef")}>
+                      <div className="text-xs text-gray-400">{lbl}</div>
+                      <div className={`text-sm font-bold ${color}`}>{q(val)}</div>
+                    </div>
+                  ))}
+                </div>
+              );
+            })()}
+
             {/* Indicador gastos pendientes */}
             {compras.filter(c=>!c.registrado&&c.estado!=="ANULADO").length>0&&(
               <div className="bg-orange-50 border border-orange-300 rounded-xl p-3 flex items-center justify-between">
@@ -1789,7 +1238,14 @@ export default function App(){
                 <span>El gasto se agrega a la semana correspondiente. Vaya a <b>📅 Semanal</b> para ver todos los gastos y registrar la partida consolidada.</span>
               </div>
             )}
-            <FormGasto num={nextNum} onSave={addCompra}/>
+            <FormGasto num={nextNum} onSave={(c)=>{
+              // Aprender cuenta del proveedor
+              if(c.proveedor&&c.cta){
+                const key=c.proveedor.toUpperCase().slice(0,20);
+                setProvCat(prev=>({...prev,[key]:c.cta}));
+              }
+              addCompra(c);
+            }} provCat={provCat}/>
           </div>
         )}
 
@@ -1836,6 +1292,28 @@ export default function App(){
               <h2 className="font-bold text-gray-800">Libro Mayor — Junio</h2>
             </div>
             <LibroMayorView partidas={partidas}/>
+          </div>
+        )}
+
+        {tab==="ef"&&(
+          <div className="space-y-3">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-2xl">📈</span>
+              <div><h2 className="font-bold text-gray-800">Estados Financieros</h2>
+                <p className="text-xs text-gray-500">P&L y Balance calculados en tiempo real desde las partidas</p></div>
+            </div>
+            <EstadosFinancierosView partidas={partidas}/>
+          </div>
+        )}
+
+        {tab==="conciliar"&&(
+          <div className="space-y-3">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="text-2xl">✅</span>
+              <div><h2 className="font-bold text-gray-800">Conciliación Automática</h2>
+                <p className="text-xs text-gray-500">Saldos por cuenta — Mayor generado automáticamente del Diario</p></div>
+            </div>
+            <ConciliacionView partidas={partidas}/>
           </div>
         )}
 
